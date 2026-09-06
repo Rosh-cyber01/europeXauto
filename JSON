@@ -1,0 +1,204 @@
+{
+  "country": "France",
+  "provider": "Auto Europe",
+  "cities": [
+    {
+      "name": "Paris",
+      "code": "PAR",
+      "locations": [
+        {
+          "type": "Airport",
+          "name": "Charles de Gaulle Airport",
+          "code": "CDG",
+          "address": "95700 Roissy-en-France, France"
+        },
+        {
+          "type": "Airport",
+          "name": "Paris Orly Airport",
+          "code": "ORY",
+          "address": "94390 Orly, France"
+        },
+        {
+          "type": "Airport",
+          "name": "Beauvais-Tillé Airport",
+          "code": "BVA",
+          "address": "60000 Beauvais, France"
+        },
+        {
+          "type": "Train Station",
+          "name": "Gare du Nord",
+          "code": "XPG",
+          "address": "18 Rue de Dunkerque, 75010 Paris"
+        },
+        {
+          "type": "Train Station",
+          "name": "Gare de Lyon",
+          "code": "PLY",
+          "address": "Place Louis-Armand, 75012 Paris"
+        },
+        {
+          "type": "Train Station",
+          "name": "Gare de l'Est",
+          "code": "XER",
+          "address": "Place 11 Novembre 1918, 75010 Paris"
+        },
+        {
+          "type": "Train Station",
+          "name": "Gare Montparnasse",
+          "code": "XPT",
+          "address": "17 Boulevard Vaugirard, 75015 Paris"
+        },
+        {
+          "type": "Train Station",
+          "name": "Gare Saint-Lazare",
+          "code": "XSN",
+          "address": "13 Rue d'Amsterdam, 75008 Paris"
+        },
+        {
+          "type": "Train Station",
+          "name": "Paris Disneyland TGV Station",
+          "code": "XED",
+          "address": "Chessy, France"
+        },
+        {
+          "type": "Train Station",
+          "name": "Gare d'Austerlitz",
+          "code": "XDB",
+          "address": "85 Boulevard Hôpital, 75013 Paris"
+        },
+        {
+          "type": "Downtown / City Center",
+          "name": "Paris Central Office",
+          "code": "PARC01",
+          "address": "Various Downtown Supplier Desks"
+        }
+      ]
+    },
+    {
+      "name": "Nice",
+      "code": "NCE",
+      "locations": [
+        {
+          "type": "Airport",
+          "name": "Nice Côte d'Azur Airport",
+          "code": "NCE",
+          "address": "06281 Nice, France"
+        },
+        {
+          "type": "Train Station",
+          "name": "Nice Ville Rail Station",
+          "code": "ARJ",
+          "address": "Avenue Thiers, 06008 Nice"
+        }
+      ]
+    },
+    {
+      "name": "Lyon",
+      "code": "LYN",
+      "locations": [
+        {
+          "type": "Airport",
+          "name": "Lyon-Saint Exupéry Airport",
+          "code": "LYS",
+          "address": "69125 Colombier-Saugnieu, France"
+        },
+        {
+          "type": "Train Station",
+          "name": "Lyon Part-Dieu Rail Station",
+          "code": "XYD",
+          "address": "5 Place Charles Béraudier, 69003 Lyon"
+        }
+      ]
+    },
+    {
+      "name": "Marseille",
+      "code": "MRS",
+      "locations": [
+        {
+          "type": "Airport",
+          "name": "Marseille Provence Airport",
+          "code": "MRS",
+          "address": "13700 Marignane, France"
+        },
+        {
+          "type": "Train Station",
+          "name": "Marseille Saint-Charles Station",
+          "code": "XRF",
+          "address": "Square Narvik, 13001 Marseille"
+        }
+      ]
+    },
+    {
+      "name": "Bordeaux",
+      "code": "BOD",
+      "locations": [
+        {
+          "type": "Airport",
+          "name": "Bordeaux-Mérignac Airport",
+          "code": "BOD",
+          "address": "33700 Mérignac, France"
+        },
+        {
+          "type": "Train Station",
+          "name": "Bordeaux Saint-Jean Rail Station",
+          "code": "ZFQ",
+          "address": "Rue Charles Domercq, 33800 Bordeaux"
+        }
+      ]
+    },
+    {
+      "name": "Toulouse",
+      "code": "TLS",
+      "locations": [
+        {
+          "type": "Airport",
+          "name": "Toulouse-Blagnac Airport",
+          "code": "TLS",
+          "address": "31700 Blagnac, France"
+        },
+        {
+          "type": "Train Station",
+          "name": "Toulouse Matabiau Rail Station",
+          "code": "XYT",
+          "address": "64 Boulevard Pierre Semard, 31500 Toulouse"
+        }
+      ]
+    },
+    {
+      "name": "Strasbourg",
+      "code": "SXB",
+      "locations": [
+        {
+          "type": "Airport",
+          "name": "Strasbourg Airport",
+          "code": "SXB",
+          "address": "67960 Entzheim, France"
+        },
+        {
+          "type": "Train Station",
+          "name": "Strasbourg Central Rail Station",
+          "code": "XER",
+          "address": "Place de la Gare, 67000 Strasbourg"
+        }
+      ]
+    },
+    {
+      "name": "Lille",
+      "code": "LIL",
+      "locations": [
+        {
+          "type": "Airport",
+          "name": "Lille Lesquin Airport",
+          "code": "LIL",
+          "address": "59810 Lesquin, France"
+        },
+        {
+          "type": "Train Station",
+          "name": "Gare de Lille Europe / Flandres",
+          "code": "XDB",
+          "address": "1 Place des Buisses, 59000 Lille"
+        }
+      ]
+    }
+  ]
+}
