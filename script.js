@@ -95,7 +95,7 @@ const countryReviews = {
   ]
 };
 
-/* EVENT HANDLERS & INTERACTION */
+/* EVENT HANDLERS & INITIALIZATION */
 document.addEventListener("DOMContentLoaded", () => {
   renderReviews('default');
 
@@ -105,7 +105,95 @@ document.addEventListener("DOMContentLoaded", () => {
   diffDropoff.addEventListener("change", (e) => {
     dropoffField.style.display = e.target.checked ? "flex" : "none";
   });
+
+  // Attach Location Autocomplete API to Inputs
+  setupLocationAutocomplete("pickupLocation", "pickupSuggestions");
+  setupLocationAutocomplete("dropoffLocation", "dropoffSuggestions");
 });
+
+/* OPENSTREETMAP NOMINATIM API FOR CITIES, AIRPORTS & STATIONS */
+let searchDebounce = null;
+
+function setupLocationAutocomplete(inputId, dropdownId) {
+  const input = document.getElementById(inputId);
+  const dropdown = document.getElementById(dropdownId);
+
+  if (!input || !dropdown) return;
+
+  input.addEventListener("input", (e) => {
+    const query = e.target.value.trim();
+    clearTimeout(searchDebounce);
+
+    if (query.length < 2) {
+      dropdown.innerHTML = "";
+      return;
+    }
+
+    // Debounce to prevent flooding the API with too many requests
+    searchDebounce = setTimeout(() => {
+      fetchLocationSuggestions(query, dropdown, input);
+    }, 300);
+  });
+
+  // Hide dropdown when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!input.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.innerHTML = "";
+    }
+  });
+}
+
+async function fetchLocationSuggestions(query, dropdown, input) {
+  try {
+    // OpenStreetMap API query targeting transit hubs, stations, airports, and landmarks
+    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&addressdetails=1&limit=6`;
+    const response = await fetch(url);
+    const data = await response.json();
+
+    dropdown.innerHTML = "";
+
+    if (data.length === 0) {
+      dropdown.innerHTML = `<div class="suggestion-item">No places found</div>`;
+      return;
+    }
+
+    data.forEach(place => {
+      const div = document.createElement("div");
+      div.className = "suggestion-item";
+
+      // Display name formatting (e.g. Airport, Station, or Landmark)
+      const placeName = place.display_name;
+      div.textContent = placeName;
+
+      div.addEventListener("click", () => {
+        input.value = placeName;
+        dropdown.innerHTML = "";
+
+        // Check if the location corresponds to a known country to switch language & icon
+        detectAndSwitchRegion(place.address);
+      });
+
+      dropdown.appendChild(div);
+    });
+  } catch (error) {
+    console.error("Error fetching locations:", error);
+  }
+}
+
+function detectAndSwitchRegion(address) {
+  if (!address || !address.country) return;
+
+  const countryName = address.country.toLowerCase();
+
+  // Find matching key in locationData
+  const matchKey = Object.keys(locationData).find(key => 
+    locationData[key].country.toLowerCase() === countryName || key === countryName
+  );
+
+  if (matchKey) {
+    selectLocation(matchKey);
+  }
+}
 
 function selectLocation(key) {
   const item = locationData[key];
@@ -160,14 +248,3 @@ function renderReviews(countryKey) {
     container.appendChild(card);
   });
 }
-
-/* API DATA EXPORT FOR LOCATIONS & CITIES */
-window.autoEuropeAPI = {
-  getLocations: () => locationData,
-  searchLocations: (query) => {
-    const q = query.toLowerCase();
-    return Object.values(locationData).filter(loc => 
-      loc.name.toLowerCase().includes(q) || loc.country.toLowerCase().includes(q)
-    );
-  }
-};
