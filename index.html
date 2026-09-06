@@ -1,254 +1,221 @@
-/* LOCATION DATA & BACKGROUND ICONS */
-const locationData = {
-  milan: { name: "Milan", country: "Italy", lang: "it", bgIcon: "https://images.unsplash.com/photo-1513581166391-887a96ddeafd?auto=format&fit=crop&w=1200&q=80" },
-  munich: { name: "Munich", country: "Germany", lang: "de", bgIcon: "https://images.unsplash.com/photo-1595867818082-083862f3d630?auto=format&fit=crop&w=1200&q=80" },
-  lisbon: { name: "Lisbon", country: "Portugal", lang: "pt", bgIcon: "https://images.unsplash.com/photo-1503917988258-f87a78e3c995?auto=format&fit=crop&w=1200&q=80" },
-  paris: { name: "Paris", country: "France", lang: "fr", bgIcon: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80" },
-  barcelona: { name: "Barcelona", country: "Spain", lang: "es", bgIcon: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=80" },
-  athens: { name: "Athens", country: "Greece", lang: "el", bgIcon: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80" },
-  amsterdam: { name: "Amsterdam", country: "Netherlands", lang: "nl", bgIcon: "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1200&q=80" },
-  italy: { name: "Italy", country: "Italy", lang: "it", bgIcon: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80" },
-  france: { name: "France", country: "France", lang: "fr", bgIcon: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80" },
-  spain: { name: "Spain", country: "Spain", lang: "es", bgIcon: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=80" },
-  portugal: { name: "Portugal", country: "Portugal", lang: "pt", bgIcon: "https://images.unsplash.com/photo-1503917988258-f87a78e3c995?auto=format&fit=crop&w=1200&q=80" },
-  germany: { name: "Germany", country: "Germany", lang: "de", bgIcon: "https://images.unsplash.com/photo-1595867818082-083862f3d630?auto=format&fit=crop&w=1200&q=80" },
-  greece: { name: "Greece", country: "Greece", lang: "el", bgIcon: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80" },
-  usa: { name: "USA", country: "USA", lang: "en", bgIcon: "https://images.unsplash.com/photo-1506146332389-18140dc7b2fb?auto=format&fit=crop&w=1200&q=80" }
-};
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>autoXeurope | Car Rental Deals Across Europe</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-/* TRANSLATIONS DATA */
-const translations = {
-  en: {
-    customerCare: "CUSTOMER CARE",
-    navDeals: "Deals", navDestinations: "Destinations", navReviews: "Reviews", navWhy: "Why Us", navContact: "Contact",
-    heroTitle: "Compare Car Rental Deals Across Europe",
-    heroSubtitle: "Find the right car at the right price from leading rental companies.",
-    pickupLocation: "Pick-up Location", dropoffLocation: "Drop-off Location", differentDropoff: "Return car to a different location",
-    pickupDate: "Pick-up Date", returnDate: "Return Date", driverAge: "Driver Age", searchCars: "SEARCH CARS",
-    whyBook: "Why Book With Us", why1: "Compare companies for the best rates", why2: "Free cancellation up to 48hrs before Pick-up", why3: "No credit card fees", why4: "Available 7 days a week", why5: "28,000 Pick-up locations worldwide",
-    topCities: "GREAT DEALS IN TOP CITIES", popularCountries: "BEST RATES IN POPULAR COUNTRIES", topDestinations: "TOP DESTINATIONS", company: "COMPANY",
-    priceNote: "*Rates shown are per day, based upon a 7-day rental. Taxes and additional surcharges may apply."
-  },
-  fr: {
-    customerCare: "SERVICE CLIENT",
-    navDeals: "Offres", navDestinations: "Destinations", navReviews: "Avis", navWhy: "Pourquoi Nous", navContact: "Contact",
-    heroTitle: "Comparez les offres de location de voitures en Europe",
-    heroSubtitle: "Trouvez la bonne voiture au meilleur prix auprès des grands loueurs.",
-    pickupLocation: "Lieu de prise en charge", dropoffLocation: "Lieu de restitution", differentDropoff: "Restituer dans un autre lieu",
-    pickupDate: "Date de départ", returnDate: "Date de retour", driverAge: "Âge du conducteur", searchCars: "RECHERCHER",
-    whyBook: "Pourquoi réserver chez nous", why1: "Meilleurs tarifs garantis", why2: "Annulation gratuite 48h avant", why3: "Pas de frais de carte", why4: "Service 7/7j", why5: "28 000 agences dans le monde",
-    topCities: "MEILLEURES OFFRES PAR VILLE", popularCountries: "MEILLEURS TARIFS PAR PAYS", topDestinations: "DESTINATIONS POPULAIRES", company: "ENTREPRISE",
-    priceNote: "*Tarifs par jour basés sur une location de 7 jours."
-  },
-  it: {
-    customerCare: "ASSISTENZA CLIENTI",
-    navDeals: "Offerte", navDestinations: "Destinazioni", navReviews: "Recensioni", navWhy: "Perché Noi", navContact: "Contatti",
-    heroTitle: "Confronta il noleggio auto in Europa",
-    heroSubtitle: "Trova l'auto ideale al miglior prezzo.",
-    pickupLocation: "Luogo di ritiro", dropoffLocation: "Luogo di riconsegna", differentDropoff: "Riconsegna in un altro luogo",
-    pickupDate: "Data di ritiro", returnDate: "Data di riconsegna", driverAge: "Età del guidatore", searchCars: "CERCA AUTO",
-    whyBook: "Perché prenotare con noi", why1: "Confronta le migliori tariffe", why2: "Cancellazione gratuita fino a 48 ore", why3: "Nessun costo carta", why4: "Disponibile 7 giorni su 7", why5: "28.000 punti di ritiro nel mondo",
-    topCities: "OFFERTE NELLE CITTÀ", popularCountries: "TARIFFE NEI PAESI", topDestinations: "DESTINAZIONI", company: "AZIENDA",
-    priceNote: "*Tariffe giornaliere basate su noleggio di 7 giorni."
-  },
-  de: {
-    customerCare: "KUNDENSERVICE",
-    navDeals: "Angebote", navDestinations: "Ziele", navReviews: "Bewertungen", navWhy: "Warum Wir", navContact: "Kontakt",
-    heroTitle: "Mietwagenangebote in Europa vergleichen",
-    heroSubtitle: "Finden Sie das passende Fahrzeug zum besten Preis.",
-    pickupLocation: "Abholort", dropoffLocation: "Rückgabeort", differentDropoff: "An anderem Ort zurückgeben",
-    pickupDate: "Abholdatum", returnDate: "Rückgabedatum", driverAge: "Fahreralter", searchCars: "FAHRZEUGE SUCHEN",
-    whyBook: "Warum bei uns buchen", why1: "Anbieter vergleichen & sparen", why2: "Kostenlose Stornierung bis 48 Std.", why3: "Keine Kreditkartengebühren", why4: "7 Tage die Woche erreichbar", why5: "28.000 Stationen weltweit",
-    topCities: "TOP STÄDTE ANGEBOTE", popularCountries: "BELIEBTE LÄNDER PREISE", topDestinations: "TOP REISEZIELE", company: "UNTERNEHMEN",
-    priceNote: "*Tagespreise basierend auf 7 Tagen Mietdauer."
-  },
-  es: {
-    customerCare: "ATENCIÓN AL CLIENTE",
-    navDeals: "Ofertas", navDestinations: "Destinos", navReviews: "Reseñas", navWhy: "Por Qué Elegirnos", navContact: "Contacto",
-    heroTitle: "Compara coches de alquiler en Europa",
-    heroSubtitle: "Encuentra el coche adecuado al mejor precio.",
-    pickupLocation: "Lugar de recogida", dropoffLocation: "Lugar de devolución", differentDropoff: "Devolver en otro lugar",
-    pickupDate: "Fecha de recogida", returnDate: "Fecha de devolución", driverAge: "Edad del conductor", searchCars: "BUSCAR COCHES",
-    whyBook: "Por qué reservar con nosotros", why1: "Compara tarifas al instante", why2: "Cancelación gratis hasta 48h antes", why3: "Sin comisiones por tarjeta", why4: "Atención 7 días a la semana", why5: "28.000 puntos de recogida",
-    topCities: "OFERTAS EN CIUDADES", popularCountries: "TARIFAS POR PAÍS", topDestinations: "DESTINOS PRINCIPALES", company: "COMPAÑÍA",
-    priceNote: "*Precios por día basados en alquiler de 7 días."
-  }
-};
+  <!-- HEADER BAR -->
+  <header class="main-header">
+    <div class="header-container">
+      <div class="brand">
+        <a href="index.html" class="logo">auto<span>X</span>europe</a>
+        <p class="tagline">Great prices and best services since 1954</p>
+      </div>
 
-/* COUNTRY-SPECIFIC REVIEWS */
-const countryReviews = {
-  france: [
-    { text: "Super smooth pick-up at CDG Airport in Paris. Car was spotless!", author: "PIERRE M." },
-    { text: "Auto Europe is reliable. Got a neat Renault Clio for our road trip.", author: "SOPHIE T." }
-  ],
-  italy: [
-    { text: "Excellent experience driving around Milan and Tuscany!", author: "MARCO R." },
-    { text: "Fast desk service and hassle-free return in Rome.", author: "LUCIA B." }
-  ],
-  germany: [
-    { text: "Flawless autobahn cruiser from Munich station. Very satisfied.", author: "HANS W." },
-    { text: "Great pricing for 10 days rental across Germany.", author: "GRETA K." }
-  ],
-  default: [
-    { text: "Everything ran smoothly! Saved over €100 compared to local desks.", author: "MARIA MARTA" },
-    { text: "Easy booking and excellent customer support 7 days a week.", author: "MICHAEL K." }
-  ]
-};
+      <nav class="navigation">
+        <a href="#deals" data-i18n="navDeals">Deals</a>
+        <a href="#destinations" data-i18n="navDestinations">Destinations</a>
+        <a href="#reviews" data-i18n="navReviews">Reviews</a>
+        <a href="#why-us" data-i18n="navWhy">Why Us</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
+      </nav>
 
-/* EVENT HANDLERS & INITIALIZATION */
-document.addEventListener("DOMContentLoaded", () => {
-  renderReviews('default');
+      <div class="customer-care">
+        <span class="care-label" data-i18n="customerCare">CUSTOMER CARE</span>
+        <a href="tel:+33805119691" class="phone-number">+33 805119691</a>
+      </div>
+    </div>
+  </header>
 
-  const diffDropoff = document.getElementById("differentDropoff");
-  const dropoffField = document.getElementById("dropoffField");
+  <!-- HERO & SEARCH SECTION WITH DYNAMIC BACKGROUND ICON -->
+  <section class="hero" id="heroSection">
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <h1 data-i18n="heroTitle">Compare Car Rental Deals Across Europe</h1>
+        <p data-i18n="heroSubtitle">Find the right car at the right price from leading rental companies.</p>
 
-  diffDropoff.addEventListener("change", (e) => {
-    dropoffField.style.display = e.target.checked ? "flex" : "none";
-  });
+        <!-- SEARCH FORM CARD -->
+        <div class="search-box">
+          <div class="search-row top-row">
+            <div class="field location-field">
+              <label data-i18n="pickupLocation">Pick-up Location</label>
+              <input type="text" id="pickupLocation" placeholder="Enter city or airport" autocomplete="off">
+              <div id="pickupSuggestions" class="suggestions"></div>
+            </div>
 
-  // Attach Location Autocomplete API to Inputs
-  setupLocationAutocomplete("pickupLocation", "pickupSuggestions");
-  setupLocationAutocomplete("dropoffLocation", "dropoffSuggestions");
-});
+            <div class="field checkbox-field">
+              <label>
+                <input type="checkbox" id="differentDropoff">
+                <span data-i18n="differentDropoff">Return car to a different location</span>
+              </label>
+            </div>
+          </div>
 
-/* OPENSTREETMAP NOMINATIM API FOR CITIES, AIRPORTS & STATIONS */
-let searchDebounce = null;
+          <div class="search-grid">
+            <div class="field" id="dropoffField" style="display: none;">
+              <label data-i18n="dropoffLocation">Drop-off Location</label>
+              <input type="text" id="dropoffLocation" placeholder="Enter city or airport" autocomplete="off">
+              <div id="dropoffSuggestions" class="suggestions"></div>
+            </div>
 
-function setupLocationAutocomplete(inputId, dropdownId) {
-  const input = document.getElementById(inputId);
-  const dropdown = document.getElementById(dropdownId);
+            <div class="field">
+              <label data-i18n="pickupDate">Pick-up Date</label>
+              <input type="date" id="pickupDate">
+            </div>
 
-  if (!input || !dropdown) return;
+            <div class="field">
+              <label data-i18n="returnDate">Return Date</label>
+              <input type="date" id="returnDate">
+            </div>
 
-  input.addEventListener("input", (e) => {
-    const query = e.target.value.trim();
-    clearTimeout(searchDebounce);
+            <div class="field">
+              <label data-i18n="driverAge">Driver Age</label>
+              <select id="driverAge">
+                <option value="21">21</option>
+                <option value="25">25</option>
+                <option value="30" selected>30</option>
+                <option value="40">40</option>
+                <option value="50">50</option>
+                <option value="60">60+</option>
+              </select>
+            </div>
 
-    if (query.length < 2) {
-      dropdown.innerHTML = "";
-      return;
-    }
+            <button class="search-btn" id="searchButton" data-i18n="searchCars">SEARCH CARS</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    // Debounce to prevent flooding the API with too many requests
-    searchDebounce = setTimeout(() => {
-      fetchLocationSuggestions(query, dropdown, input);
-    }, 300);
-  });
+  <!-- MID-PAGE PARTNER BRANDS -->
+  <section class="partner-bar-centered">
+    <div class="partner-container">
+      <span class="partner-name alamo">Alamo</span>
+      <span class="partner-name avis">AVIS</span>
+      <span class="partner-name budget">Budget</span>
+      <span class="partner-name dollar">dollar</span>
+      <span class="partner-name europcar">Europcar</span>
+      <span class="partner-name hertz">Hertz</span>
+      <span class="partner-name national">National</span>
+      <span class="partner-name sixt">SIXT</span>
+    </div>
+  </section>
 
-  // Hide dropdown when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!input.contains(e.target) && !dropdown.contains(e.target)) {
-      dropdown.innerHTML = "";
-    }
-  });
-}
+  <!-- DYNAMIC REVIEWS & WHY BOOK WITH US -->
+  <section class="trust-section" id="reviews">
+    <div class="trust-container">
+      <div class="reviews-wrapper" id="reviewsContainer">
+        <!-- Injected via JavaScript -->
+      </div>
 
-async function fetchLocationSuggestions(query, dropdown, input) {
-  try {
-    // OpenStreetMap API query targeting transit hubs, stations, airports, and landmarks
-    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&addressdetails=1&limit=6`;
-    const response = await fetch(url);
-    const data = await response.json();
+      <div class="why-card" id="why-us">
+        <h2 data-i18n="whyBook">Why Book With Us</h2>
+        <ul>
+          <li data-i18n="why1">Compare companies for the best rates</li>
+          <li data-i18n="why2">Free cancellation up to 48hrs before Pick-up</li>
+          <li data-i18n="why3">No credit card fees</li>
+          <li data-i18n="why4">Available 7 days a week</li>
+          <li data-i18n="why5">28,000 Pick-up locations worldwide</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    dropdown.innerHTML = "";
+  <!-- CITIES & COUNTRIES DESTINATIONS -->
+  <main class="main-container" id="destinations">
+    <div class="yellow-divider"></div>
 
-    if (data.length === 0) {
-      dropdown.innerHTML = `<div class="suggestion-item">No places found</div>`;
-      return;
-    }
+    <section class="destination-section">
+      <!-- CITIES -->
+      <div class="destination-column">
+        <h3 data-i18n="topCities">GREAT DEALS IN TOP CITIES</h3>
+        <div class="destination-line"></div>
+        <div class="destination-grid">
+          <div class="destination-item" onclick="selectLocation('milan')">
+            <span>Milan</span><strong>€5 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('barcelona')">
+            <span>Barcelona</span><strong>€4 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('munich')">
+            <span>Munich</span><strong>€26 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('athens')">
+            <span>Athens</span><strong>€5 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('lisbon')">
+            <span>Lisbon</span><strong>€3 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('amsterdam')">
+            <span>Amsterdam</span><strong>€35 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('paris')">
+            <span>Paris</span><strong>€13 <small>/ day*</small></strong>
+          </div>
+        </div>
+      </div>
 
-    data.forEach(place => {
-      const div = document.createElement("div");
-      div.className = "suggestion-item";
+      <!-- COUNTRIES -->
+      <div class="destination-column">
+        <h3 data-i18n="popularCountries">BEST RATES IN POPULAR COUNTRIES</h3>
+        <div class="destination-line"></div>
+        <div class="destination-grid">
+          <div class="destination-item" onclick="selectLocation('italy')">
+            <span>Italy</span><strong>€5 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('france')">
+            <span>France</span><strong>€17 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('spain')">
+            <span>Spain</span><strong>€4 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('portugal')">
+            <span>Portugal</span><strong>€3 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('germany')">
+            <span>Germany</span><strong>€18 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('greece')">
+            <span>Greece</span><strong>€14 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('usa')">
+            <span>USA</span><strong>€24 <small>/ day*</small></strong>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      // Display name formatting (e.g. Airport, Station, or Landmark)
-      const placeName = place.display_name;
-      div.textContent = placeName;
+    <p class="price-note" data-i18n="priceNote">
+      *Rates shown are per day, based upon a 7-day rental. Taxes and additional surcharges may apply. Offers may be suspended without prior notice and prices may change.
+    </p>
+  </main>
 
-      div.addEventListener("click", () => {
-        input.value = placeName;
-        dropdown.innerHTML = "";
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3 data-i18n="topDestinations">TOP DESTINATIONS</h3>
+        <a onclick="selectLocation('paris')">Paris</a>
+        <a onclick="selectLocation('milan')">Milan</a>
+        <a onclick="selectLocation('barcelona')">Barcelona</a>
+        <a onclick="selectLocation('lisbon')">Lisbon</a>
+      </div>
+      <div class="footer-column">
+        <h3 data-i18n="company">COMPANY</h3>
+        <a href="#">About Us</a>
+        <a href="#contact">Contact</a>
+        <a href="#reviews">Reviews</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 autoXeurope. All rights reserved. | Customer Care: +33 805119691</span>
+    </div>
+  </footer>
 
-        // Check if the location corresponds to a known country to switch language & icon
-        detectAndSwitchRegion(place.address);
-      });
-
-      dropdown.appendChild(div);
-    });
-  } catch (error) {
-    console.error("Error fetching locations:", error);
-  }
-}
-
-function detectAndSwitchRegion(address) {
-  if (!address || !address.country) return;
-
-  const countryName = address.country.toLowerCase();
-
-  // Find matching key in locationData
-  const matchKey = Object.keys(locationData).find(key => 
-    locationData[key].country.toLowerCase() === countryName || key === countryName
-  );
-
-  if (matchKey) {
-    selectLocation(matchKey);
-  }
-}
-
-function selectLocation(key) {
-  const item = locationData[key];
-  if (!item) return;
-
-  // 1. Set input value
-  document.getElementById("pickupLocation").value = item.name + ", " + item.country;
-
-  // 2. Change dynamic Hero Background Image
-  const hero = document.getElementById("heroSection");
-  hero.style.backgroundImage = `url('${item.bgIcon}')`;
-
-  // 3. Switch Language
-  const langKey = item.lang && translations[item.lang] ? item.lang : 'en';
-  applyLanguage(langKey);
-
-  // 4. Load region-specific reviews
-  const reviewKey = item.country.toLowerCase();
-  renderReviews(countryReviews[reviewKey] ? reviewKey : 'default');
-
-  // Smooth scroll up to search box
-  hero.scrollIntoView({ behavior: 'smooth' });
-}
-
-function applyLanguage(lang) {
-  const dict = translations[lang] || translations.en;
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.getAttribute("data-i18n");
-    if (dict[key]) {
-      if (el.tagName === "INPUT" && el.type === "submit") {
-        el.value = dict[key];
-      } else {
-        el.textContent = dict[key];
-      }
-    }
-  });
-}
-
-function renderReviews(countryKey) {
-  const reviews = countryReviews[countryKey] || countryReviews.default;
-  const container = document.getElementById("reviewsContainer");
-  container.innerHTML = "";
-
-  reviews.forEach(rev => {
-    const card = document.createElement("div");
-    card.className = "review-card";
-    card.innerHTML = `
-      <div class="stars">★★★★★</div>
-      <p>"${rev.text}"</p>
-      <span>${rev.author}</span>
-    `;
-    container.appendChild(card);
-  });
-}
-<!-- Ensure this is at the bottom of index.html -->
   <script src="script.js"></script>
 </body>
 </html>
