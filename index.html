@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Europe Car Rental</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            EuropeCarRental
+        </div>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Locations</a>
+            <a href="#">Deals</a>
+            <a href="#">FAQ</a>
+            <a href="#">Contact</a>
+        </nav>
+
+        <div class="phone">
+            ☎ <a href="tel:+33805119691">+33 805119691</a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+
+        <div class="overlay">
+
+            <h1>Compare Car Rental Prices Across Europe</h1>
+            <p>Find the best deals in France, Spain, Italy, Germany and more.</p>
+
+            <div class="search-box">
+
+                <div class="field">
+                    <label>Pick-up Location</label>
+                    <input type="text" id="pickup" placeholder="Paris, CDG Airport">
+                    <div id="pickup-list" class="suggestions"></div>
+                </div>
+
+                <div class="field">
+                    <label>Drop-off Location</label>
+                    <input type="text" id="dropoff" placeholder="Paris, CDG Airport">
+                    <div id="dropoff-list" class="suggestions"></div>
+                </div>
+
+                <div class="field">
+                    <label>Pick-up Date</label>
+                    <input type="date">
+                </div>
+
+                <div class="field">
+                    <label>Return Date</label>
+                    <input type="date">
+                </div>
+
+                <div class="field">
+                    <label>Driver Age</label>
+                    <input type="number" value="30" min="18">
+                </div>
+
+                <button id="searchBtn">
+                    Search Cars
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Popular Locations -->
+    <section class="locations">
+
+        <h2>Popular Locations</h2>
+
+        <div class="cards">
+
+            <div class="card">Paris</div>
+            <div class="card">Lyon</div>
+            <div class="card">Nice</div>
+            <div class="card">Rome</div>
+            <div class="card">Barcelona</div>
+            <div class="card">Berlin</div>
+
+        </div>
+
+    </section>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
