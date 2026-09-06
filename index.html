@@ -1,848 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Europe Car Rental | Compare Car Rental Deals</title>
-
-    <meta name="description"
-        content="Compare car rental prices across Europe. Find great car rental deals in Paris, Milan, Munich, Lisbon, Barcelona, Athens and Amsterdam.">
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>autoXeurope | Car Rental Deals Across Europe</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- =====================================================
-         TOP PARTNER BAR
-    ====================================================== -->
+  <!-- HEADER BAR -->
+  <header class="main-header">
+    <div class="header-container">
+      <div class="brand">
+        <a href="index.html" class="logo">auto<span>X</span>europe</a>
+        <p class="tagline">Great prices and best services since 1954</p>
+      </div>
 
-    <div class="partner-bar">
+      <nav class="navigation">
+        <a href="#deals" data-i18n="navDeals">Deals</a>
+        <a href="#destinations" data-i18n="navDestinations">Destinations</a>
+        <a href="#reviews" data-i18n="navReviews">Reviews</a>
+        <a href="#why-us" data-i18n="navWhy">Why Us</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
+      </nav>
 
-        <div class="partner-container">
-
-            <div class="partner-name">Alamo</div>
-            <div class="partner-name avis">AVIS</div>
-            <div class="partner-name budget">Budget</div>
-            <div class="partner-name dollar">dollar</div>
-            <div class="partner-name europecar">Europcar</div>
-            <div class="partner-name hertz">Hertz</div>
-            <div class="partner-name national">National</div>
-            <div class="partner-name sixt">SIXT</div>
-
-        </div>
-
+      <div class="customer-care">
+        <span class="care-label" data-i18n="customerCare">CUSTOMER CARE</span>
+        <a href="tel:+33805119691" class="phone-number">+33 805119691</a>
+      </div>
     </div>
+  </header>
 
+  <!-- HERO & SEARCH SECTION WITH DYNAMIC BACKGROUND ICON -->
+  <section class="hero" id="heroSection">
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <h1 data-i18n="heroTitle">Compare Car Rental Deals Across Europe</h1>
+        <p data-i18n="heroSubtitle">Find the right car at the right price from leading rental companies.</p>
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
-
-    <header class="header">
-
-        <div class="header-container">
-
-            <a href="index.html" class="logo">
-                EURO<span>CAR</span>
-            </a>
-
-            <nav class="navigation">
-
-                <a href="#deals" data-i18n="navDeals">
-                    Deals
-                </a>
-
-                <a href="#destinations" data-i18n="navDestinations">
-                    Destinations
-                </a>
-
-                <a href="#reviews" data-i18n="navReviews">
-                    Reviews
-                </a>
-
-                <a href="#why-us" data-i18n="navWhy">
-                    Why Us
-                </a>
-
-                <a href="#contact" data-i18n="navContact">
-                    Contact
-                </a>
-
-            </nav>
-
-
-            <div class="customer-care">
-
-                <span class="care-label" data-i18n="customerCare">
-                    Customer Care
-                </span>
-
-                <a href="tel:+33805119691">
-                    +33 805119691
-                </a>
-
+        <!-- SEARCH FORM CARD -->
+        <div class="search-box">
+          <div class="search-row top-row">
+            <div class="field location-field">
+              <label data-i18n="pickupLocation">Pick-up Location</label>
+              <input type="text" id="pickupLocation" placeholder="Enter city or airport" autocomplete="off">
+              <div id="pickupSuggestions" class="suggestions"></div>
             </div>
 
+            <div class="field checkbox-field">
+              <label>
+                <input type="checkbox" id="differentDropoff">
+                <span data-i18n="differentDropoff">Return car to a different location</span>
+              </label>
+            </div>
+          </div>
 
-            <button class="mobile-menu" id="mobileMenu">
-                ☰
-            </button>
+          <div class="search-grid">
+            <div class="field" id="dropoffField" style="display: none;">
+              <label data-i18n="dropoffLocation">Drop-off Location</label>
+              <input type="text" id="dropoffLocation" placeholder="Enter city or airport" autocomplete="off">
+              <div id="dropoffSuggestions" class="suggestions"></div>
+            </div>
 
+            <div class="field">
+              <label data-i18n="pickupDate">Pick-up Date</label>
+              <input type="date" id="pickupDate">
+            </div>
+
+            <div class="field">
+              <label data-i18n="returnDate">Return Date</label>
+              <input type="date" id="returnDate">
+            </div>
+
+            <div class="field">
+              <label data-i18n="driverAge">Driver Age</label>
+              <select id="driverAge">
+                <option value="21">21</option>
+                <option value="25">25</option>
+                <option value="30" selected>30</option>
+                <option value="40">40</option>
+                <option value="50">50</option>
+                <option value="60">60+</option>
+              </select>
+            </div>
+
+            <button class="search-btn" id="searchButton" data-i18n="searchCars">SEARCH CARS</button>
+          </div>
         </div>
-
-    </header>
-
-
-    <!-- =====================================================
-         HERO / SEARCH
-    ====================================================== -->
-
-    <section class="hero">
-
-        <div class="hero-overlay">
-
-            <div class="hero-content">
-
-                <h1 data-i18n="heroTitle">
-                    Compare Car Rental Deals Across Europe
-                </h1>
-
-                <p data-i18n="heroSubtitle">
-                    Find the right car at the right price from leading rental companies.
-                </p>
-
-
-                <!-- SEARCH BOX -->
-
-                <div class="search-container">
-
-                    <div class="search-top">
-
-                        <div class="search-field location-field">
-
-                            <label data-i18n="pickupLocation">
-                                Pick-up Location
-                            </label>
-
-                            <input
-                                type="text"
-                                id="pickupLocation"
-                                placeholder="Enter city or airport"
-                                autocomplete="off">
-
-                            <div id="pickupSuggestions"
-                                class="suggestions">
-                            </div>
-
-                        </div>
-
-
-                        <div class="different-location">
-
-                            <label>
-
-                                <input
-                                    type="checkbox"
-                                    id="differentDropoff">
-
-                                <span data-i18n="differentDropoff">
-                                    Return car to a different location
-                                </span>
-
-                            </label>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="search-grid">
-
-                        <div class="search-field" id="dropoffField">
-
-                            <label data-i18n="dropoffLocation">
-                                Drop-off Location
-                            </label>
-
-                            <input
-                                type="text"
-                                id="dropoffLocation"
-                                placeholder="Enter city or airport"
-                                autocomplete="off">
-
-                            <div id="dropoffSuggestions"
-                                class="suggestions">
-                            </div>
-
-                        </div>
-
-
-                        <div class="search-field">
-
-                            <label data-i18n="pickupDate">
-                                Pick-up Date
-                            </label>
-
-                            <input
-                                type="date"
-                                id="pickupDate">
-
-                        </div>
-
-
-                        <div class="search-field">
-
-                            <label data-i18n="returnDate">
-                                Return Date
-                            </label>
-
-                            <input
-                                type="date"
-                                id="returnDate">
-
-                        </div>
-
-
-                        <div class="search-field">
-
-                            <label data-i18n="driverAge">
-                                Driver Age
-                            </label>
-
-                            <select id="driverAge">
-
-                                <option value="21">21</option>
-                                <option value="25">25</option>
-                                <option value="30" selected>30</option>
-                                <option value="35">35</option>
-                                <option value="40">40</option>
-                                <option value="50">50</option>
-                                <option value="60">60</option>
-                                <option value="70">70+</option>
-
-                            </select>
-
-                        </div>
-
-
-                        <button
-                            class="search-button"
-                            id="searchButton"
-                            data-i18n="searchCars">
-
-                            SEARCH CARS
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         REVIEWS + WHY BOOK
-    ====================================================== -->
-
-    <section class="trust-section" id="reviews">
-
-        <div class="trust-container">
-
-
-            <!-- REVIEW 1 -->
-
-            <div class="review-card">
-
-                <div class="stars">
-                    ★★★★★
-                </div>
-
-                <p>
-                    "Everything ran smoothly!"
-                </p>
-
-                <span>
-                    MARIA MARTA
-                </span>
-
-            </div>
-
-
-            <!-- REVIEW 2 -->
-
-            <div class="review-card">
-
-                <div class="stars">
-                    ★★★★★
-                </div>
-
-                <p>
-                    "Very good company"
-                </p>
-
-                <span>
-                    MICHAEL
-                </span>
-
-            </div>
-
-
-            <!-- REVIEW 3 -->
-
-            <div class="review-card">
-
-                <div class="stars">
-                    ★★★★★
-                </div>
-
-                <p>
-                    "Easy booking and excellent service."
-                </p>
-
-                <span>
-                    SOPHIE
-                </span>
-
-            </div>
-
-
-            <!-- WHY US -->
-
-            <div class="why-card" id="why-us">
-
-                <h2 data-i18n="whyBook">
-                    Why Book With Us
-                </h2>
-
-                <ul>
-
-                    <li data-i18n="why1">
-                        Compare companies for the best rates
-                    </li>
-
-                    <li data-i18n="why2">
-                        Free cancellation on eligible bookings
-                    </li>
-
-                    <li data-i18n="why3">
-                        No credit card fees
-                    </li>
-
-                    <li data-i18n="why4">
-                        Available 7 days a week
-                    </li>
-
-                    <li data-i18n="why5">
-                        Thousands of pick-up locations
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         MAIN CONTENT
-    ====================================================== -->
-
-    <main class="main-container" id="deals">
-
-        <h2 class="main-title" data-i18n="mainTitle">
-            EUROPE CAR RENTAL DEALS & TRAVEL TIPS
-        </h2>
-
-
-        <!-- FEATURE CARDS -->
-
-        <div class="feature-grid">
-
-
-            <a href="#destinations" class="feature-card feature-one">
-
-                <div class="feature-overlay">
-
-                    <h3 data-i18n="bestRates">
-                        BEST CAR RENTAL RATES
-                    </h3>
-
-                    <div class="yellow-line"></div>
-
-                </div>
-
-            </a>
-
-
-            <a href="#destinations" class="feature-card feature-two">
-
-                <div class="feature-overlay">
-
-                    <h3 data-i18n="motorhome">
-                        MOTORHOME HIRE
-                    </h3>
-
-                    <div class="yellow-line"></div>
-
-                </div>
-
-            </a>
-
-
-            <a href="#deals" class="feature-card feature-three">
-
-                <div class="feature-overlay">
-
-                    <h3 data-i18n="compareSave">
-                        COMPARE & SAVE
-                    </h3>
-
-                    <div class="yellow-line"></div>
-
-                </div>
-
-            </a>
-
-        </div>
-
-
-        <div class="yellow-divider"></div>
-
-
-        <!-- =================================================
-             CITIES + COUNTRIES
-        ================================================== -->
-
-        <section class="destination-section" id="destinations">
-
-
-            <!-- CITIES -->
-
-            <div class="destination-column">
-
-                <h3 data-i18n="topCities">
-                    GREAT DEALS IN TOP CITIES
-                </h3>
-
-                <div class="destination-line"></div>
-
-
-                <div class="destination-list">
-
-
-                    <div class="destination-item"
-                        onclick="goToLocation('milan')">
-
-                        <span>Milan</span>
-
-                        <strong>
-                            €5 <small>/ day*</small>
-                        </strong>
-
-                    </div>
-
-
-                    <div class="destination-item"
-                        onclick="goToLocation('barcelona')">
-
-                        <span>Barcelona</span>
-
-                        <strong>
-                            €4 <small>/ day*</small>
-                        </strong>
-
-                    </div>
-
-
-                    <div class="destination-item"
-                        onclick="goToLocation('munich')">
-
-                        <span>Munich</span>
-
-                        <strong>
-                            €26 <small>/ day*</small>
-                        </strong>
-
-                    </div>
-
-
-                    <div class="destination-item"
-                        onclick="goToLocation('athens')">
-
-                        <span>Athens</span>
-
-                        <strong>
-                            €5 <small>/ day*</small>
-                        </strong>
-
-                    </div>
-
-
-                    <div class="destination-item"
-                        onclick="goToLocation('lisbon')">
-
-                        <span>Lisbon</span>
-
-                        <strong>
-                            €3 <small>/ day*</small>
-                        </strong>
-
-                    </div>
-
-
-                    <div class="destination-item"
-                        onclick="goToLocation('amsterdam')">
-
-                        <span>Amsterdam</span>
-
-                        <strong>
-                            €35 <small>/ day*</small>
-                        </strong>
-
-                    </div>
-
-
-                    <div class="destination-item"
-                        onclick="goToLocation('paris')">
-
-                        <span>Paris</span>
-
-                        <strong>
-                            €13 <small>/ day*</small>
-                        </strong>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-
-            <!-- COUNTRIES -->
-
-            <div class="destination-column">
-
-                <h3 data-i18n="popularCountries">
-                    BEST RATES IN POPULAR COUNTRIES
-                </h3>
-
-                <div class="destination-line"></div>
-
-
-                <div class="destination-list">
-
-
-                    <div class="destination-item"
-                        onclick="goToLocation('italy')">
-
-                        <span>Italy</span>
-
-                        <strong>
-                            €5 <small>/ day*</small>
-                        </strong>
-
-                    </div>
-
-
-                    <div class="destination-item"
-                        onclick="goToLocation('france')">
-
-                        <span>France</span>
-
-                        <strong>
-                            €17 <small>/ day*</small>
-                        </strong>
-
-                    </div>
-
-
-                    <div class="destination-item"
-                        onclick="goToLocation('spain')">
-
-                        <span>Spain</span>
-
-                        <strong>
-                            €4 <small>/ day*</small>
-                        </strong>
-
-                    </div>
-
-
-                    <div class="destination-item"
-                        onclick="goToLocation('portugal')">
-
-                        <span>Portugal</span>
-
-                        <strong>
-                            €3 <small>/ day*</small>
-                        </strong>
-
-                    </div>
-
-
-                    <div class="destination-item"
-                        onclick="goToLocation('germany')">
-
-                        <span>Germany</span>
-
-                        <strong>
-                            €18 <small>/ day*</small>
-                        </strong>
-
-                    </div>
-
-
-                    <div class="destination-item"
-                        onclick="goToLocation('greece')">
-
-                        <span>Greece</span>
-
-                        <strong>
-                            €14 <small>/ day*</small>
-                        </strong>
-
-                    </div>
-
-
-                    <div class="destination-item"
-                        onclick="goToLocation('usa')">
-
-                        <span>USA</span>
-
-                        <strong>
-                            €24 <small>/ day*</small>
-                        </strong>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <p class="price-note" data-i18n="priceNote">
-            *Rates shown are per day, based upon a 7-day rental.
-            Taxes and additional surcharges may apply.
-            Offers may be suspended without prior notice and prices may change.
-        </p>
-
-    </main>
-
-
-    <!-- =====================================================
-         EMAIL SIGNUP
-    ====================================================== -->
-
-    <section class="newsletter">
-
-        <div class="newsletter-container">
-
-            <strong data-i18n="newsletter">
-                SIGN UP FOR EXCLUSIVE OFFERS!
-            </strong>
-
-            <div class="newsletter-form">
-
-                <input
-                    type="email"
-                    placeholder="Your Email"
-                    id="emailInput">
-
-                <button id="subscribeButton">
-                    →
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
-
-    <footer id="contact">
-
-        <div class="footer-container">
-
-
-            <div class="footer-column">
-
-                <h3 data-i18n="topDestinations">
-                    TOP DESTINATIONS
-                </h3>
-
-                <a onclick="goToLocation('paris')">
-                    Paris
-                </a>
-
-                <a onclick="goToLocation('milan')">
-                    Milan
-                </a>
-
-                <a onclick="goToLocation('barcelona')">
-                    Barcelona
-                </a>
-
-                <a onclick="goToLocation('lisbon')">
-                    Lisbon
-                </a>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h3 data-i18n="moreDestinations">
-                    MORE DESTINATIONS
-                </h3>
-
-                <a onclick="goToLocation('munich')">
-                    Munich
-                </a>
-
-                <a onclick="goToLocation('athens')">
-                    Athens
-                </a>
-
-                <a onclick="goToLocation('amsterdam')">
-                    Amsterdam
-                </a>
-
-                <a onclick="goToLocation('nice')">
-                    Nice
-                </a>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h3 data-i18n="planTrip">
-                    PLAN YOUR TRIP
-                </h3>
-
-                <a href="#">
-                    Flexible Cancellation
-                </a>
-
-                <a href="#">
-                    Travel Guides
-                </a>
-
-                <a href="#">
-                    Car Rental Destinations
-                </a>
-
-                <a href="#">
-                    Fuel Tips
-                </a>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h3 data-i18n="company">
-                    COMPANY
-                </h3>
-
-                <a href="#">
-                    About Us
-                </a>
-
-                <a href="#">
-                    Contact
-                </a>
-
-                <a href="#reviews">
-                    Customer Reviews
-                </a>
-
-                <a href="#why-us">
-                    Why Book With Us
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <div class="footer-bottom">
-
-            <span>
-                © 2026 Europe Car Rental
-            </span>
-
-            <span>
-                |
-            </span>
-
-            <a href="#">
-                Privacy
-            </a>
-
-            <span>
-                |
-            </span>
-
-            <a href="#">
-                Cookies
-            </a>
-
-            <span>
-                |
-            </span>
-
-            <a href="#">
-                Terms & Conditions
-            </a>
-
-            <div class="footer-phone">
-
-                <a href="tel:+33805119691">
-                    ☎ +33 805119691
-                </a>
-
-            </div>
-
-        </div>
-
-    </footer>
-
-
-    <!-- =====================================================
-         LOADING SCREEN
-    ====================================================== -->
-
-    <div id="loadingScreen" class="loading-screen">
-
-        <div class="loader"></div>
-
-        <p data-i18n="loading">
-            Loading your destination...
-        </p>
-
+      </div>
     </div>
+  </section>
 
+  <!-- MID-PAGE PARTNER BRANDS -->
+  <section class="partner-bar-centered">
+    <div class="partner-container">
+      <span class="partner-name alamo">Alamo</span>
+      <span class="partner-name avis">AVIS</span>
+      <span class="partner-name budget">Budget</span>
+      <span class="partner-name dollar">dollar</span>
+      <span class="partner-name europcar">Europcar</span>
+      <span class="partner-name hertz">Hertz</span>
+      <span class="partner-name national">National</span>
+      <span class="partner-name sixt">SIXT</span>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <!-- DYNAMIC REVIEWS & WHY BOOK WITH US -->
+  <section class="trust-section" id="reviews">
+    <div class="trust-container">
+      <div class="reviews-wrapper" id="reviewsContainer">
+        <!-- Injected via JavaScript -->
+      </div>
 
+      <div class="why-card" id="why-us">
+        <h2 data-i18n="whyBook">Why Book With Us</h2>
+        <ul>
+          <li data-i18n="why1">Compare companies for the best rates</li>
+          <li data-i18n="why2">Free cancellation up to 48hrs before Pick-up</li>
+          <li data-i18n="why3">No credit card fees</li>
+          <li data-i18n="why4">Available 7 days a week</li>
+          <li data-i18n="why5">28,000 Pick-up locations worldwide</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CITIES & COUNTRIES DESTINATIONS -->
+  <main class="main-container" id="destinations">
+    <div class="yellow-divider"></div>
+
+    <section class="destination-section">
+      <!-- CITIES -->
+      <div class="destination-column">
+        <h3 data-i18n="topCities">GREAT DEALS IN TOP CITIES</h3>
+        <div class="destination-line"></div>
+        <div class="destination-grid">
+          <div class="destination-item" onclick="selectLocation('milan')">
+            <span>Milan</span><strong>€5 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('barcelona')">
+            <span>Barcelona</span><strong>€4 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('munich')">
+            <span>Munich</span><strong>€26 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('athens')">
+            <span>Athens</span><strong>€5 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('lisbon')">
+            <span>Lisbon</span><strong>€3 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('amsterdam')">
+            <span>Amsterdam</span><strong>€35 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('paris')">
+            <span>Paris</span><strong>€13 <small>/ day*</small></strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- COUNTRIES -->
+      <div class="destination-column">
+        <h3 data-i18n="popularCountries">BEST RATES IN POPULAR COUNTRIES</h3>
+        <div class="destination-line"></div>
+        <div class="destination-grid">
+          <div class="destination-item" onclick="selectLocation('italy')">
+            <span>Italy</span><strong>€5 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('france')">
+            <span>France</span><strong>€17 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('spain')">
+            <span>Spain</span><strong>€4 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('portugal')">
+            <span>Portugal</span><strong>€3 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('germany')">
+            <span>Germany</span><strong>€18 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('greece')">
+            <span>Greece</span><strong>€14 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectLocation('usa')">
+            <span>USA</span><strong>€24 <small>/ day*</small></strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <p class="price-note" data-i18n="priceNote">
+      *Rates shown are per day, based upon a 7-day rental. Taxes and additional surcharges may apply. Offers may be suspended without prior notice and prices may change.
+    </p>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3 data-i18n="topDestinations">TOP DESTINATIONS</h3>
+        <a onclick="selectLocation('paris')">Paris</a>
+        <a onclick="selectLocation('milan')">Milan</a>
+        <a onclick="selectLocation('barcelona')">Barcelona</a>
+        <a onclick="selectLocation('lisbon')">Lisbon</a>
+      </div>
+      <div class="footer-column">
+        <h3 data-i18n="company">COMPANY</h3>
+        <a href="#">About Us</a>
+        <a href="#contact">Contact</a>
+        <a href="#reviews">Reviews</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 autoXeurope. All rights reserved. | Customer Care: +33 805119691</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
-
 </html>
