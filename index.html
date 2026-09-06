@@ -3,8 +3,419 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>autoXeurope | Car Rental Deals Across Europe</title>
-  <link rel="stylesheet" href="style.css">
+  <title>autoXeurope | Car Rental Paris & France</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    /* HEADER */
+    .main-header {
+      background: #ffffff;
+      border-bottom: 2px solid #e2e8f0;
+      padding: 12px 24px;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand .logo {
+      font-size: 28px;
+      font-weight: 900;
+      color: #0b2545;
+      text-decoration: none;
+      letter-spacing: -1px;
+    }
+
+    .brand .logo span {
+      color: #d97706;
+    }
+
+    .brand .tagline {
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    .navigation a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #1e293b;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .navigation a:hover {
+      color: #d97706;
+    }
+
+    .customer-care {
+      text-align: right;
+    }
+
+    .care-label {
+      display: block;
+      font-size: 10px;
+      color: #64748b;
+      letter-spacing: 0.5px;
+    }
+
+    .phone-number {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0b2545;
+      text-decoration: none;
+    }
+
+    /* HERO & BACKGROUND SLIDESHOW */
+    .hero {
+      position: relative;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      transition: background-image 1s ease-in-out;
+      min-height: 480px;
+    }
+
+    .hero-overlay {
+      background: rgba(11, 37, 69, 0.75);
+      min-height: 480px;
+      padding: 40px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      width: 100%;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .hero-content h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .hero-content p {
+      font-size: 16px;
+      margin-bottom: 24px;
+      color: #cbd5e1;
+    }
+
+    /* SEARCH BOX */
+    .search-box {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 20px;
+      color: #1e293b;
+      text-align: left;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .search-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      flex: 1;
+    }
+
+    .field label {
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #475569;
+    }
+
+    .field input, .field select {
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .checkbox-field {
+      flex-direction: row;
+      align-items: center;
+      margin-top: 18px;
+    }
+
+    .checkbox-field label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .search-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      align-items: flex-end;
+    }
+
+    .search-btn {
+      background: #d97706;
+      color: #ffffff;
+      border: none;
+      padding: 12px;
+      font-weight: 800;
+      border-radius: 4px;
+      cursor: pointer;
+      height: 42px;
+    }
+
+    .search-btn:hover {
+      background: #b45309;
+    }
+
+    .suggestions {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border: 1px solid #cbd5e1;
+      z-index: 100;
+      max-height: 200px;
+      overflow-y: auto;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .suggestion-item {
+      padding: 10px 12px;
+      cursor: pointer;
+      font-size: 13px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .suggestion-item:hover {
+      background: #f1f5f9;
+      color: #d97706;
+    }
+
+    /* INFORMATIONAL CAR RENTAL SECTIONS */
+    .info-section {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+      color: #334155;
+    }
+
+    .info-block {
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .info-block h2 {
+      font-size: 26px;
+      font-weight: 800;
+      color: #0b2545;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+    }
+
+    .info-block h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #0b2545;
+      margin: 20px 0 10px 0;
+    }
+
+    .info-block p {
+      margin-bottom: 14px;
+      font-size: 15px;
+      color: #475569;
+    }
+
+    .content-with-image {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .content-text {
+      flex: 2;
+    }
+
+    .content-image {
+      flex: 1;
+      text-align: center;
+    }
+
+    .content-image img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .airport-details {
+      background: #f1f5f9;
+      padding: 16px;
+      border-left: 4px solid #0b2545;
+      margin-bottom: 12px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .airport-details strong {
+      color: #0b2545;
+    }
+
+    /* SUPPLIER LOGOS SECTION */
+    .supplier-section {
+      background: #ffffff;
+      padding: 40px 20px;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+      text-align: center;
+    }
+
+    .supplier-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .supplier-grid {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .supplier-badge {
+      font-size: 28px;
+      font-weight: 900;
+      padding: 10px 20px;
+      border-radius: 4px;
+      letter-spacing: -1px;
+    }
+
+    .supplier-badge.budget { color: #d97706; border: 2px solid #d97706; }
+    .supplier-badge.avis { background: #d97706; color: #ffffff; }
+    .supplier-badge.europcar { background: #15803d; color: #ffffff; }
+    .supplier-badge.hertz { background: #facc15; color: #000000; }
+
+    /* DESTINATIONS SECTION */
+    .main-container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .destination-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .destination-column h3 {
+      font-size: 16px;
+      font-weight: 900;
+      margin-bottom: 8px;
+      color: #0b2545;
+    }
+
+    .destination-line {
+      height: 1px;
+      background: #cbd5e1;
+      margin-bottom: 12px;
+    }
+
+    .destination-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 24px;
+    }
+
+    .destination-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px solid #f1f5f9;
+      cursor: pointer;
+    }
+
+    .destination-item span {
+      color: #2563eb;
+      font-size: 14px;
+    }
+
+    .destination-item:hover span {
+      text-decoration: underline;
+    }
+
+    .destination-item strong {
+      color: #2563eb;
+      font-size: 14px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #1e293b;
+      color: #ffffff;
+      padding: 40px 20px 20px 20px;
+    }
+
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+    }
+
+    .footer-column h3 {
+      font-size: 12px;
+      color: #cbd5e1;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .footer-column a, .footer-column p {
+      display: block;
+      color: #94a3b8;
+      font-size: 13px;
+      text-decoration: none;
+      margin-bottom: 8px;
+    }
+
+    .footer-column a:hover {
+      color: #ffffff;
+    }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 30px auto 0 auto;
+      padding-top: 16px;
+      border-top: 1px solid #334155;
+      text-align: center;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+  </style>
 </head>
 <body>
 
@@ -17,63 +428,62 @@
       </div>
 
       <nav class="navigation">
-        <a href="#deals" data-i18n="navDeals">Deals</a>
-        <a href="#destinations" data-i18n="navDestinations">Destinations</a>
-        <a href="#reviews" data-i18n="navReviews">Reviews</a>
-        <a href="#why-us" data-i18n="navWhy">Why Us</a>
-        <a href="#contact" data-i18n="navContact">Contact</a>
+        <a href="#searchBox">Deals</a>
+        <a href="#destinations">Destinations</a>
+        <a href="#paris-info">Paris Guide</a>
+        <a href="#contact">Contact</a>
       </nav>
 
       <div class="customer-care">
-        <span class="care-label" data-i18n="customerCare">CUSTOMER CARE</span>
+        <span class="care-label">CUSTOMER CARE</span>
         <a href="tel:+33805119691" class="phone-number">+33 805119691</a>
       </div>
     </div>
   </header>
 
-  <!-- HERO & SEARCH SECTION WITH DYNAMIC BACKGROUND ICON -->
+  <!-- HERO & SEARCH SECTION WITH AUTOMATIC 10-SECOND BACKGROUND ROTATION -->
   <section class="hero" id="heroSection">
     <div class="hero-overlay">
       <div class="hero-content">
-        <h1 data-i18n="heroTitle">Compare Car Rental Deals Across Europe</h1>
-        <p data-i18n="heroSubtitle">Find the right car at the right price from leading rental companies.</p>
+        <h1>Compare Car Rental Deals Across France & Neighboring Regions</h1>
+        <p>Find the right car at the right price from leading rental companies.</p>
 
         <!-- SEARCH FORM CARD -->
-        <div class="search-box">
+        <div class="search-box" id="searchBox">
           <div class="search-row top-row">
             <div class="field location-field">
-              <label data-i18n="pickupLocation">Pick-up Location</label>
-              <input type="text" id="pickupLocation" placeholder="Enter city or airport" autocomplete="off">
+              <label>Pick-up Location</label>
+              <input type="text" id="pickupLocation" placeholder="Enter French city, airport, station..." autocomplete="off">
               <div id="pickupSuggestions" class="suggestions"></div>
             </div>
 
             <div class="field checkbox-field">
               <label>
                 <input type="checkbox" id="differentDropoff">
-                <span data-i18n="differentDropoff">Return car to a different location</span>
+                <span>Return car to a different location</span>
               </label>
             </div>
           </div>
 
           <div class="search-grid">
             <div class="field" id="dropoffField" style="display: none;">
-              <label data-i18n="dropoffLocation">Drop-off Location</label>
-              <input type="text" id="dropoffLocation" placeholder="Enter city or airport" autocomplete="off">
+              <label>Drop-off Location</label>
+              <input type="text" id="dropoffLocation" placeholder="Enter drop-off location..." autocomplete="off">
               <div id="dropoffSuggestions" class="suggestions"></div>
             </div>
 
             <div class="field">
-              <label data-i18n="pickupDate">Pick-up Date</label>
+              <label>Pick-up Date</label>
               <input type="date" id="pickupDate">
             </div>
 
             <div class="field">
-              <label data-i18n="returnDate">Return Date</label>
+              <label>Return Date</label>
               <input type="date" id="returnDate">
             </div>
 
             <div class="field">
-              <label data-i18n="driverAge">Driver Age</label>
+              <label>Driver Age</label>
               <select id="driverAge">
                 <option value="21">21</option>
                 <option value="25">25</option>
@@ -84,138 +494,285 @@
               </select>
             </div>
 
-            <button class="search-btn" id="searchButton" data-i18n="searchCars">SEARCH CARS</button>
+            <button class="search-btn" id="searchButton">SEARCH CARS</button>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MID-PAGE PARTNER BRANDS -->
-  <section class="partner-bar-centered">
-    <div class="partner-container">
-      <span class="partner-name alamo">Alamo</span>
-      <span class="partner-name avis">AVIS</span>
-      <span class="partner-name budget">Budget</span>
-      <span class="partner-name dollar">dollar</span>
-      <span class="partner-name europcar">Europcar</span>
-      <span class="partner-name hertz">Hertz</span>
-      <span class="partner-name national">National</span>
-      <span class="partner-name sixt">SIXT</span>
+  <!-- INFORMATIONAL CAR RENTAL SECTION -->
+  <section class="info-section" id="paris-info">
+    <div class="info-block">
+      <div class="content-with-image">
+        <div class="content-text">
+          <h2>CAR RENTAL IN PARIS - CITY OF ROMANCE</h2>
+          <p>Steeped in history, cultural and architectural gems, Paris is a city to turn heads. Along with many interesting places to see and visit, Paris has a cultural heritage hard to match - which makes it one of the most visited cities in the world. For those visiting for the first time, it's understandably the Eiffel Tower that many head to. It is without a doubt the most symbolic landmark in Paris.</p>
+          <p>Art is also high on every visitor's list. The city has an abundance of rich museums, and the magnificent Notre Dame. Parisian suburbs are colourful, vibrant and interesting to see and experience - specifically Montmartre, Marais, Belleville and Trocadero - not forgetting the Latin Quarter. Few cities portray such admiration, intrigue, fascination and passion - it's no wonder Paris is considered the city of love.</p>
+          <p>Street performers, writers and artists have all placed their mark on the city along the centuries. The city's splendid avenues often hide a labyrinth of bistro eateries, restaurants and quaint coffee houses. Consider a <strong>car rental in Paris</strong> and uncover much of the urban surroundings too. Head to other magical French cities such as Lyon, Nantes and Nice, on the French Riviera.</p>
+          <p>With over 70 years of car rental experience on a global scale, <strong>Auto Europe</strong> is well positioned through its trusted car rental suppliers to provide an exceptional car rental experience. From standard vehicles to luxury cars and motorhome hiring, we have everything covered. With regular promotions all designed to save you money, through our booking engine filters you'll easily narrow down your search and find the very best car rental deal for your budget.</p>
+        </div>
+        <div class="content-image">
+          <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=500&q=80" alt="Rental Car">
+        </div>
+      </div>
+    </div>
+
+    <div class="info-block">
+      <h2>WHERE TO PICK UP A CAR HIRE IN PARIS</h2>
+      <p>As one of the main car rental brokers in the world, we are able to provide through our local, national and international car rental suppliers numerous convenient locations for your rental - airports, train stations and in central city areas. We have partnered with some of the very best in the industry - Avis, Budget, Enterprise, Europcar, Hertz, Sixt and many more, to provide you exceptional choice and a large fleet of vehicles to choose from.</p>
+      <p>With so many locations to choose from in France, many customers opt for a <strong>car rental in Paris</strong> on a one-way car rental basis. This means that you can rent a car in Paris and drop it off anywhere else - such as in Marseille. This valued benefit is great for customers who are interested in exploring more of France or its neighbouring countries.</p>
+
+      <h3>PARIS INTERNATIONAL AIRPORTS</h3>
+      <p>Paris is well serviced via three major modern and large airports. Orly International Airport is only 14 kms from the south of Paris. Beauvais-Tillé Airport is around an hour by car from northern Paris via the A16 motorway. Lastly, Charles de Gaulle Airport is by far the most popular airport serving Paris. It is around 25 kms from northern Paris along the A1 motorway.</p>
+
+      <div class="airport-details">
+        <p><strong>Charles de Gaulle Airport (CDG)</strong></p>
+        <p>Website: parisaeroport.fr</p>
+        <p>Address: 95700 Roissy-en-France, France</p>
+        <p>Telephone: +33 170 363950</p>
+      </div>
+
+      <div class="airport-details">
+        <p><strong>Paris Orly (ORY)</strong></p>
+        <p>Website: parisaeroport.fr</p>
+        <p>Address: 94390 Orly, France</p>
+        <p>Telephone: +33 892 563950</p>
+      </div>
+
+      <div class="airport-details">
+        <p><strong>Beauvais-Tillé (BVA)</strong></p>
+        <p>Website: aeroportparisbeauvais.com</p>
+        <p>Address: 60000 Beauvais, France</p>
+        <p>Telephone: +33 892 68 20 66</p>
+      </div>
+    </div>
+
+    <div class="info-block">
+      <h3>PARIS TRAIN STATIONS</h3>
+      <p>Paris is served by numerous main train stations that together connect all major cities in France, including some rail links to other European countries, such as Switzerland, the Netherlands, Belgium and Germany. The main train station for Paris are Gare du Nord, Gare de l'Est and Gare de Lyon. Along with having car rental suppliers present at these locations, we also have car rental options at Gare de Saint-Lazare, Gare de Montparnasse, Gare de Chessy/Disneyland and many more.</p>
     </div>
   </section>
 
-  <!-- DYNAMIC REVIEWS & WHY BOOK WITH US -->
-  <section class="trust-section" id="reviews">
-    <div class="trust-container">
-      <div class="reviews-wrapper" id="reviewsContainer">
-        <!-- Injected via JavaScript -->
+  <!-- SUPPLIERS SECTION -->
+  <section class="supplier-section">
+    <div class="supplier-container">
+      <div class="info-block" style="margin-bottom:20px;">
+        <h2>BOOK WITH THE BEST CAR RENTAL SUPPLIERS IN PARIS</h2>
+        <p>Auto Europe was founded in 1954 and has since grown into one of the top global car rental brokers. Through our trusted partners we are able to provide a large fleet of vehicles, convenient locations and a first-class customer service before, during and after your rental. Using our secure online booking engine customers are able to search, compare and book the very best car rental deal for their budget.</p>
       </div>
 
-      <div class="why-card" id="why-us">
-        <h2 data-i18n="whyBook">Why Book With Us</h2>
-        <ul>
-          <li data-i18n="why1">Compare companies for the best rates</li>
-          <li data-i18n="why2">Free cancellation up to 48hrs before Pick-up</li>
-          <li data-i18n="why3">No credit card fees</li>
-          <li data-i18n="why4">Available 7 days a week</li>
-          <li data-i18n="why5">28,000 Pick-up locations worldwide</li>
-        </ul>
+      <div class="supplier-grid">
+        <div class="supplier-badge budget">Budget</div>
+        <div class="supplier-badge avis">AVIS</div>
+        <div class="supplier-badge europcar">Europcar</div>
+        <div class="supplier-badge hertz">Hertz</div>
       </div>
     </div>
   </section>
 
-  <!-- CITIES & COUNTRIES DESTINATIONS -->
+  <!-- DESTINATIONS SECTION (FOCUS ON FRANCE & NEIGHBORS) -->
   <main class="main-container" id="destinations">
-    <div class="yellow-divider"></div>
-
     <section class="destination-section">
-      <!-- CITIES -->
+      <!-- TOP CITIES IN FRANCE -->
       <div class="destination-column">
-        <h3 data-i18n="topCities">GREAT DEALS IN TOP CITIES</h3>
+        <h3>TOP CITIES IN FRANCE</h3>
         <div class="destination-line"></div>
         <div class="destination-grid">
-          <div class="destination-item" onclick="selectLocation('milan')">
-            <span>Milan</span><strong>€5 <small>/ day*</small></strong>
-          </div>
-          <div class="destination-item" onclick="selectLocation('barcelona')">
-            <span>Barcelona</span><strong>€4 <small>/ day*</small></strong>
-          </div>
-          <div class="destination-item" onclick="selectLocation('munich')">
-            <span>Munich</span><strong>€26 <small>/ day*</small></strong>
-          </div>
-          <div class="destination-item" onclick="selectLocation('athens')">
-            <span>Athens</span><strong>€5 <small>/ day*</small></strong>
-          </div>
-          <div class="destination-item" onclick="selectLocation('lisbon')">
-            <span>Lisbon</span><strong>€3 <small>/ day*</small></strong>
-          </div>
-          <div class="destination-item" onclick="selectLocation('amsterdam')">
-            <span>Amsterdam</span><strong>€35 <small>/ day*</small></strong>
-          </div>
-          <div class="destination-item" onclick="selectLocation('paris')">
+          <div class="destination-item" onclick="selectDestination('Paris, France')">
             <span>Paris</span><strong>€13 <small>/ day*</small></strong>
           </div>
+          <div class="destination-item" onclick="selectDestination('Nice, France')">
+            <span>Nice</span><strong>€15 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectDestination('Lyon, France')">
+            <span>Lyon</span><strong>€14 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectDestination('Marseille, France')">
+            <span>Marseille</span><strong>€12 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectDestination('Toulouse, France')">
+            <span>Toulouse</span><strong>€11 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectDestination('Bordeaux, France')">
+            <span>Bordeaux</span><strong>€14 <small>/ day*</small></strong>
+          </div>
         </div>
       </div>
 
-      <!-- COUNTRIES -->
+      <!-- NEARBY COUNTRIES TO FRANCE -->
       <div class="destination-column">
-        <h3 data-i18n="popularCountries">BEST RATES IN POPULAR COUNTRIES</h3>
+        <h3>BEST RATES IN NEARBY COUNTRIES</h3>
         <div class="destination-line"></div>
         <div class="destination-grid">
-          <div class="destination-item" onclick="selectLocation('italy')">
-            <span>Italy</span><strong>€5 <small>/ day*</small></strong>
+          <div class="destination-item" onclick="selectDestination('France')">
+            <span>France</span><strong>€13 <small>/ day*</small></strong>
           </div>
-          <div class="destination-item" onclick="selectLocation('france')">
-            <span>France</span><strong>€17 <small>/ day*</small></strong>
+          <div class="destination-item" onclick="selectDestination('Belgium')">
+            <span>Belgium</span><strong>€16 <small>/ day*</small></strong>
           </div>
-          <div class="destination-item" onclick="selectLocation('spain')">
+          <div class="destination-item" onclick="selectDestination('Switzerland')">
+            <span>Switzerland</span><strong>€22 <small>/ day*</small></strong>
+          </div>
+          <div class="destination-item" onclick="selectDestination('Spain')">
             <span>Spain</span><strong>€4 <small>/ day*</small></strong>
           </div>
-          <div class="destination-item" onclick="selectLocation('portugal')">
-            <span>Portugal</span><strong>€3 <small>/ day*</small></strong>
+          <div class="destination-item" onclick="selectDestination('Italy')">
+            <span>Italy</span><strong>€5 <small>/ day*</small></strong>
           </div>
-          <div class="destination-item" onclick="selectLocation('germany')">
+          <div class="destination-item" onclick="selectDestination('Germany')">
             <span>Germany</span><strong>€18 <small>/ day*</small></strong>
-          </div>
-          <div class="destination-item" onclick="selectLocation('greece')">
-            <span>Greece</span><strong>€14 <small>/ day*</small></strong>
-          </div>
-          <div class="destination-item" onclick="selectLocation('usa')">
-            <span>USA</span><strong>€24 <small>/ day*</small></strong>
           </div>
         </div>
       </div>
     </section>
-
-    <p class="price-note" data-i18n="priceNote">
-      *Rates shown are per day, based upon a 7-day rental. Taxes and additional surcharges may apply. Offers may be suspended without prior notice and prices may change.
-    </p>
   </main>
 
   <!-- FOOTER -->
   <footer id="contact">
     <div class="footer-container">
       <div class="footer-column">
-        <h3 data-i18n="topDestinations">TOP DESTINATIONS</h3>
-        <a onclick="selectLocation('paris')">Paris</a>
-        <a onclick="selectLocation('milan')">Milan</a>
-        <a onclick="selectLocation('barcelona')">Barcelona</a>
-        <a onclick="selectLocation('lisbon')">Lisbon</a>
+        <h3>Top Destinations</h3>
+        <a onclick="selectDestination('Paris, France')">Paris</a>
+        <a onclick="selectDestination('Nice, France')">Nice</a>
+        <a onclick="selectDestination('Lyon, France')">Lyon</a>
+        <a onclick="selectDestination('Marseille, France')">Marseille</a>
       </div>
+
       <div class="footer-column">
-        <h3 data-i18n="company">COMPANY</h3>
-        <a href="#">About Us</a>
+        <h3>Contact Us</h3>
+        <p>Customer Care: +33 805119691</p>
+        <p>Email: Helpdesksupportairline@gmail.com</p>
+        <p>Address: 124 Rue de Rivoli, 75001 Paris, France</p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Company</h3>
+        <a href="#paris-info">About Us</a>
         <a href="#contact">Contact</a>
-        <a href="#reviews">Reviews</a>
+        <a href="#searchBox">Rental Deals</a>
       </div>
     </div>
+
     <div class="footer-bottom">
-      <span>© 2026 autoXeurope. All rights reserved. | Customer Care: +33 805119691</span>
+      <span>© 2026 autoXeurope. All rights reserved. | Contact: Helpdesksupportairline@gmail.com</span>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- ALL JAVASCRIPT LOGIC -->
+  <script>
+    // Rotational Hero Background Images
+    const backgroundImages = [
+      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80", // Paris
+      "https://images.unsplash.com/photo-1511527656417-2646c8f66292?auto=format&fit=crop&w=1200&q=80", // Lyon
+      "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80", // Nice
+      "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80"  // French Riviera
+    ];
+
+    let currentBgIndex = 0;
+
+    // Time-Based Background Slideshow across refresh/re-opens
+    function initializeBackgroundSlideshow() {
+      const hero = document.getElementById("heroSection");
+      const intervalMs = 10000; // 10 seconds
+
+      function updateBackground() {
+        const now = Date.now();
+        const timeIndex = Math.floor(now / intervalMs) % backgroundImages.length;
+        hero.style.backgroundImage = `url('${backgroundImages[timeIndex]}')`;
+      }
+
+      updateBackground();
+      setInterval(updateBackground, 1000);
+    }
+
+    // Initialize Page Controls
+    document.addEventListener("DOMContentLoaded", () => {
+      initializeBackgroundSlideshow();
+
+      const diffDropoff = document.getElementById("differentDropoff");
+      const dropoffField = document.getElementById("dropoffField");
+
+      diffDropoff.addEventListener("change", (e) => {
+        dropoffField.style.display = e.target.checked ? "flex" : "none";
+      });
+
+      setupLocationAutocomplete("pickupLocation", "pickupSuggestions");
+      setupLocationAutocomplete("dropoffLocation", "dropoffSuggestions");
+    });
+
+    let searchDebounce = null;
+
+    function setupLocationAutocomplete(inputId, dropdownId) {
+      const input = document.getElementById(inputId);
+      const dropdown = document.getElementById(dropdownId);
+
+      if (!input || !dropdown) return;
+
+      input.addEventListener("input", (e) => {
+        const query = e.target.value.trim();
+        clearTimeout(searchDebounce);
+
+        if (query.length < 2) {
+          dropdown.innerHTML = "";
+          return;
+        }
+
+        searchDebounce = setTimeout(() => {
+          fetchLocationSuggestions(query, dropdown, input);
+        }, 300);
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!input.contains(e.target) && !dropdown.contains(e.target)) {
+          dropdown.innerHTML = "";
+        }
+      });
+    }
+
+    // OpenStreetMap API with bias to France and nearby regions
+    async function fetchLocationSuggestions(query, dropdown, input) {
+      try {
+        // Boost search results for France and neighboring countries
+        const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&countrycodes=fr,be,ch,es,it,de&addressdetails=1&limit=8`;
+        const response = await fetch(url);
+        const data = await response.json();
+
+        dropdown.innerHTML = "";
+
+        if (data.length === 0) {
+          dropdown.innerHTML = `<div class="suggestion-item">No places found</div>`;
+          return;
+        }
+
+        data.forEach(place => {
+          const div = document.createElement("div");
+          div.className = "suggestion-item";
+          
+          // Clean display string
+          const placeName = place.display_name;
+          div.textContent = placeName;
+
+          // CLICK SELECTION FIX
+          div.addEventListener("mousedown", (e) => {
+            e.preventDefault(); 
+            input.value = placeName;
+            dropdown.innerHTML = "";
+          });
+
+          dropdown.appendChild(div);
+        });
+      } catch (error) {
+        console.error("Error fetching locations:", error);
+      }
+    }
+
+    function selectDestination(name) {
+      const pickupInput = document.getElementById("pickupLocation");
+      pickupInput.value = name;
+      document.getElementById("searchBox").scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
