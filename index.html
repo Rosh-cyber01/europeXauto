@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>autoXeurope | Car Rental Paris & France</title>
+  <title>autoXeurope | Location de Voiture à Paris & en France</title>
   <style>
     * {
       box-sizing: border-box;
@@ -17,7 +17,7 @@
       color: #333;
     }
 
-    /* HEADER */
+    /* EN-TÊTE / HEADER */
     .main-header {
       background: #ffffff;
       border-bottom: 2px solid #e2e8f0;
@@ -80,7 +80,7 @@
       text-decoration: none;
     }
 
-    /* HERO & BACKGROUND SLIDESHOW */
+    /* HERO & DIAPORAMA */
     .hero {
       position: relative;
       background-position: center;
@@ -109,6 +109,7 @@
     .hero-content h1 {
       font-size: 32px;
       margin-bottom: 8px;
+      text-transform: uppercase;
     }
 
     .hero-content p {
@@ -117,7 +118,7 @@
       color: #cbd5e1;
     }
 
-    /* SEARCH BOX */
+    /* FORMULAIRE DE RECHERCHE */
     .search-box {
       background: #ffffff;
       border-radius: 8px;
@@ -215,7 +216,7 @@
       color: #d97706;
     }
 
-    /* PARTNER LOGO BAR UNDER HERO */
+    /* BANNIÈRE DE PARTENAIRES */
     .partner-banner {
       background: #ffffff;
       padding: 15px 10px;
@@ -252,7 +253,54 @@
     .partner-tag.national { color: #276749; font-style: italic; }
     .partner-tag.sixt { background: #000; color: #ff6600; font-weight: 900; }
 
-    /* INFORMATIONAL CAR RENTAL SECTIONS */
+    /* REVIEWS SECTION */
+    .reviews-section {
+      background: #f1f5f9;
+      padding: 30px 20px;
+      border-bottom: 1px solid #cbd5e1;
+    }
+
+    .reviews-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .review-card {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+
+    .stars {
+      color: #f59e0b;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .review-text {
+      font-size: 14px;
+      color: #334155;
+      font-style: italic;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .review-author {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0b2545;
+      text-align: right;
+    }
+
+    /* SECTIONS D'INFORMATIONS */
     .info-section {
       max-width: 1100px;
       margin: 40px auto;
@@ -300,19 +348,148 @@
     .content-image {
       flex: 1;
       text-align: center;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
     }
 
     .content-image img {
       max-width: 100%;
       height: auto;
+      object-fit: contain;
     }
 
-    /* SUPPLIER INTERACTIVE SECTION */
-    .supplier-section {
+    /* AÉROPORTS */
+    .airport-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin: 24px 0;
+    }
+
+    .airport-card {
       background: #ffffff;
-      padding: 40px 20px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .airport-card h4 {
+      font-size: 18px;
+      color: #0b2545;
+      margin-bottom: 12px;
+      border-bottom: 2px solid #d97706;
+      padding-bottom: 4px;
+      display: inline-block;
+    }
+
+    .airport-card p {
+      font-size: 14px;
+      margin-bottom: 6px;
+      color: #334155;
+    }
+
+    .airport-card a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+    .airport-card a:hover {
+      text-decoration: underline;
+    }
+
+    /* FAQ ACCORDION STYLES */
+    .faq-section {
+      background: #ffffff;
+      padding: 50px 20px;
       border-top: 1px solid #e2e8f0;
       border-bottom: 1px solid #e2e8f0;
+    }
+
+    .faq-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .faq-header h2 {
+      font-size: 26px;
+      font-weight: 800;
+      color: #0b2545;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .faq-header p {
+      font-size: 15px;
+      color: #64748b;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 16px;
+    }
+
+    .faq-question {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .faq-icon {
+      width: 32px;
+      height: 32px;
+      background-color: #2563eb;
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: bold;
+      flex-shrink: 0;
+      transition: background-color 0.2s ease;
+    }
+
+    .faq-question:hover .faq-icon {
+      background-color: #1d4ed8;
+    }
+
+    .faq-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #0b2545;
+      text-transform: uppercase;
+      letter-spacing: -0.3px;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 16px 0 8px 47px;
+      font-size: 14.5px;
+      color: #475569;
+      line-height: 1.6;
+    }
+
+    .faq-answer.open {
+      display: block;
+    }
+
+    /* FOURNISSEURS */
+    .supplier-section {
+      background: #f8f9fa;
+      padding: 40px 20px;
       text-align: center;
     }
 
@@ -349,7 +526,7 @@
     .supplier-badge.europcar { background: #15803d; color: #ffffff; }
     .supplier-badge.hertz { background: #facc15; color: #000000; }
 
-    /* DESTINATIONS SECTION */
+    /* DESTINATIONS */
     .main-container {
       max-width: 1100px;
       margin: 40px auto;
@@ -403,7 +580,7 @@
       font-size: 14px;
     }
 
-    /* MODAL POPUP */
+    /* FENÊTRE MODALE DE POPUP */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -421,7 +598,7 @@
       background: #ffffff;
       padding: 30px;
       border-radius: 8px;
-      max-width: 400px;
+      max-width: 420px;
       width: 90%;
       text-align: center;
       position: relative;
@@ -460,7 +637,7 @@
       color: #64748b;
     }
 
-    /* FOOTER */
+    /* PIED DE PAGE / FOOTER */
     footer {
       background: #1e293b;
       color: #ffffff;
@@ -507,83 +684,85 @@
 </head>
 <body>
 
-  <!-- HEADER BAR -->
+  <!-- EN-TÊTE -->
   <header class="main-header">
     <div class="header-container">
       <div class="brand">
         <a href="index.html" class="logo">auto<span>X</span>europe</a>
-        <p class="tagline">Great prices and best services since 1954</p>
+        <p class="tagline">Excellents prix et meilleurs services depuis 1954</p>
       </div>
 
       <nav class="navigation">
-        <a href="#searchBox">Deals</a>
+        <a href="#searchBox">Offres</a>
+        <a href="#airports">Aéroports</a>
+        <a href="#faq">FAQ</a>
         <a href="#destinations">Destinations</a>
-        <a href="#paris-info">Paris Guide</a>
+        <a href="#paris-info">Guide Paris</a>
         <a href="#contact">Contact</a>
       </nav>
 
       <div class="customer-care">
-        <span class="care-label">CUSTOMER CARE</span>
+        <span class="care-label">SERVICE CLIENT</span>
         <a href="tel:+33805119691" class="phone-number">+33 805119691</a>
       </div>
     </div>
   </header>
 
-  <!-- HERO & SEARCH SECTION WITH AUTOMATIC 10-SECOND BACKGROUND ROTATION -->
+  <!-- HERO ET DIAPORAMA DE FOND -->
   <section class="hero" id="heroSection">
     <div class="hero-overlay">
       <div class="hero-content">
-        <h1>CHEAP CAR RENTAL IN PARIS</h1>
-        <p>Find the right car at the right price from leading rental companies.</p>
+        <h1>LOCATION DE VOITURE PAS CHÈRE À PARIS</h1>
+        <p>Trouvez le bon véhicule au meilleur prix parmi les grands loueurs.</p>
 
-        <!-- SEARCH FORM CARD -->
+        <!-- FORMULAIRE DE RECHERCHE -->
         <div class="search-box" id="searchBox">
           <div class="search-row top-row">
             <div class="field location-field">
-              <label>Pick-up Location</label>
-              <input type="text" id="pickupLocation" placeholder="Enter French city, airport, station..." autocomplete="off">
+              <label>Lieu de prise en charge</label>
+              <input type="text" id="pickupLocation" placeholder="Ville, aéroport, gare en France..." autocomplete="off">
               <div id="pickupSuggestions" class="suggestions"></div>
             </div>
 
             <div class="field checkbox-field">
               <label>
                 <input type="checkbox" id="differentDropoff">
-                <span>Return car to a different location</span>
+                <span>Restituer le véhicule dans un autre lieu</span>
               </label>
             </div>
           </div>
 
           <div class="search-grid">
             <div class="field" id="dropoffField" style="display: none;">
-              <label>Drop-off Location</label>
-              <input type="text" id="dropoffLocation" placeholder="Enter drop-off location..." autocomplete="off">
+              <label>Lieu de restitution</label>
+              <input type="text" id="dropoffLocation" placeholder="Entrez le lieu de restitution..." autocomplete="off">
               <div id="dropoffSuggestions" class="suggestions"></div>
             </div>
 
             <div class="field">
-              <label>Pick-up Date</label>
+              <label>Date de prise en charge</label>
               <input type="date" id="pickupDate">
             </div>
 
             <div class="field">
-              <label>Return Date</label>
+              <label>Date de restitution</label>
               <input type="date" id="returnDate">
             </div>
 
-            <!-- MANUAL DRIVER AGE INPUT -->
+            <!-- CHAISISSEMENT MANUEL DE L'ÂGE DU CONDUCTEUR -->
             <div class="field">
-              <label>Driver Age</label>
-              <input type="number" id="driverAgeInput" min="18" max="99" placeholder="e.g. 30" value="30">
+              <label>Âge du conducteur</label>
+              <input type="number" id="driverAgeInput" min="18" max="99" placeholder="ex. 30" value="30">
             </div>
 
-            <button class="search-btn" id="searchButton">GET YOUR QUOTE</button>
+            <button class="search-btn" id="searchButton" onclick="openSupportPopup('Service Devis')">OBTENIR UN DEVIS</button>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PARTNERS LOGO BANNER BELOW SEARCH -->
+  <!-- LOGOS DES PARTENAIRES -->
   <section class="partner-banner">
     <div class="partner-flex">
       <div class="partner-tag alamo" onclick="openSupportPopup('Alamo')">Alamo</div>
@@ -597,41 +776,161 @@
     </div>
   </section>
 
-  <!-- INFORMATIONAL CAR RENTAL SECTION -->
+  <!-- SECTION AVIS CLIENTS -->
+  <section class="reviews-section">
+    <div class="reviews-container">
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Une expérience fluide du début à la fin. La réservation était simple et la voiture récupérée à l'aéroport CDG était impeccable."</p>
+          <div class="review-author">— Jean-Marc D.</div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Excellent service client réactif. Nous avons loué une voiture pour 10 jours depuis Paris, tarifs très compétitifs !"</p>
+          <div class="review-author">— Sophie L.</div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Réservation sans surprise, prise en charge rapide à la gare de Lyon. Je recommande vivement leurs services."</p>
+          <div class="review-author">— Antoine R.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFORMATIONS SUR LA LOCATION -->
   <section class="info-section" id="paris-info">
     <div class="info-block">
       <div class="content-with-image">
         <div class="content-text">
-          <h2>CAR RENTAL IN PARIS - CITY OF ROMANCE</h2>
-          <p>Steeped in history, cultural and architectural gems, Paris is a city to turn heads. Along with many interesting places to see and visit, Paris has a cultural heritage hard to match - which makes it one of the most visited cities in the world. For those visiting for the first time, it's understandably the Eiffel Tower that many head to. It is without a doubt the most symbolic landmark in Paris.</p>
-          <p>Art is also high on every visitor's list. The city has an abundance of rich museums, and the magnificent Notre Dame. Parisian suburbs are colourful, vibrant and interesting to see and experience - specifically Montmartre, Marais, Belleville and Trocadero - not forgetting the Latin Quarter. Few cities portray such admiration, intrigue, fascination and passion - it's no wonder Paris is considered the city of love.</p>
-          <p>Street performers, writers and artists have all placed their mark on the city along the centuries. The city's splendid avenues often hide a labyrinth of bistro eateries, restaurants and quaint coffee houses. Consider a <strong>car rental in Paris</strong> and uncover much of the urban surroundings too. Head to other magical French cities such as Lyon, Nantes and Nice, on the French Riviera.</p>
-          <p>With over 70 years of car rental experience on a global scale, <strong>Auto Europe</strong> is well positioned through its trusted car rental suppliers to provide an exceptional car rental experience. From standard vehicles to luxury cars and motorhome hiring, we have everything covered. With regular promotions all designed to save you money, through our booking engine filters you'll easily narrow down your search and find the very best car rental deal for your budget.</p>
+          <h2>LOCATION DE VOITURE À PARIS - LA VILLE LUMIÈRE</h2>
+          <p>Riche en histoire, en trésors culturels et architecturaux, Paris est une ville captivante. En plus de ses nombreux lieux touristiques, Paris possède un patrimoine culturel unique au monde. Pour une première visite, la Tour Eiffel reste le monument emblématique incontournable.</p>
+          <p>L'art occupe également une place majeure. La ville regorge de grands musées et abrite la majestueuse cathédrale Notre-Dame. Les quartiers parisiens offrent une ambiance colorée et vivante, notamment Montmartre, Le Marais, Belleville ou le Quartier Latin.</p>
+          <p>Les artistes et écrivains ont marqué la ville au fil des siècles. Les grands boulevards abritent de nombreux bistrots et cafés typiques. Optez pour une <strong>location de voiture à Paris</strong> pour explorer également ses environs et rejoindre d'autres belles villes françaises comme Lyon, Nantes ou Nice.</p>
+          <p>Avec plus de 70 ans d'expérience, <strong>Auto Europe</strong> collabore avec des loueurs de confiance pour garantir un service de qualité adapté à votre budget.</p>
         </div>
+        <!-- VEHICLE WITH CLEAN WHITE BACKGROUND -->
         <div class="content-image">
-          <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=500&q=80" alt="Rental Car">
+          <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=500&q=80" alt="Voiture de location fond blanc">
         </div>
       </div>
     </div>
 
-    <div class="info-block">
-      <h2>WHERE TO PICK UP A CAR HIRE IN PARIS</h2>
-      <p>As one of the main car rental brokers in the world, we are able to provide through our local, national and international car rental suppliers numerous convenient locations for your rental - airports, train stations and in central city areas. We have partnered with some of the very best in the industry - Avis, Budget, Enterprise, Europcar, Hertz, Sixt and many more, to provide you exceptional choice and a large fleet of vehicles to choose from.</p>
-      <p>With so many locations to choose from in France, many customers opt for a <strong>car rental in Paris</strong> on a one-way car rental basis. This means that you can rent a car in Paris and drop it off anywhere else - such as in Marseille. This valued benefit is great for customers who are interested in exploring more of France or its neighbouring countries.</p>
-    </div>
+    <!-- COORDONNÉES DES AÉROPORTS -->
+    <div class="info-block" id="airports">
+      <h2>INFORMATIONS ET CONTACTS DES AÉROPORTS DE PARIS</h2>
+      <p>Si vous arrivez à Paris par voie aérienne, voici les informations de contact et adresses des principaux aéroports :</p>
+      
+      <div class="airport-grid">
+        <div class="airport-card">
+          <h4>Aéroport Charles de Gaulle (CDG)</h4>
+          <p><strong>Site Web :</strong> <a href="https://www.parisaeroport.fr" target="_blank" rel="noopener">parisaeroport.fr</a></p>
+          <p><strong>Adresse :</strong> 95700 Roissy-en-France, France</p>
+          <p><strong>Téléphone :</strong> <a href="tel:+33170363950">+33 170 363950</a></p>
+        </div>
 
-    <div class="info-block">
-      <h3>PARIS TRAIN STATIONS</h3>
-      <p>Paris is served by numerous main train stations that together connect all major cities in France, including some rail links to other European countries, such as Switzerland, the Netherlands, Belgium and Germany. The main train station for Paris are Gare du Nord, Gare de l'Est and Gare de Lyon. Along with having car rental suppliers present at these locations, we also have car rental options at Gare de Saint-Lazare, Gare de Montparnasse, Gare de Chessy/Disneyland and many more.</p>
+        <div class="airport-card">
+          <h4>Aéroport de Paris-Orly (ORY)</h4>
+          <p><strong>Site Web :</strong> <a href="https://www.parisaeroport.fr" target="_blank" rel="noopener">parisaeroport.fr</a></p>
+          <p><strong>Adresse :</strong> 94390 Orly, France</p>
+          <p><strong>Téléphone :</strong> <a href="tel:+33892563950">+33 892 563950</a></p>
+        </div>
+
+        <div class="airport-card">
+          <h4>Aéroport de Beauvais-Tillé (BVA)</h4>
+          <p><strong>Site Web :</strong> <a href="https://www.aeroportparisbeauvais.com" target="_blank" rel="noopener">aeroportparisbeauvais.com</a></p>
+          <p><strong>Adresse :</strong> 60000 Beauvais, France</p>
+          <p><strong>Téléphone :</strong> <a href="tel:+33892682066">+33 892 68 20 66</a></p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- SUPPLIERS SECTION WITH POPUP TRIGGERS -->
+  <!-- SECTION FAQ AVEC ACCORDÉON DE DÉROULEMENT -->
+  <section class="faq-section" id="faq">
+    <div class="faq-container">
+      <div class="faq-header">
+        <h2>FOIRE AUX QUESTIONS SUR LA LOCATION DE VOITURE À PARIS</h2>
+        <p>Afin de répondre à vos questions sur la location de véhicule à Paris, nous avons rassemblé ci-dessous les questions les plus fréquentes posées par nos clients.</p>
+      </div>
+
+      <div class="faq-list">
+        <!-- FAQ 1 -->
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <div class="faq-icon">+</div>
+            <div class="faq-title">Ai-je besoin d'une carte de crédit pour louer une voiture à Paris ?</div>
+          </div>
+          <div class="faq-answer">
+            Oui, une carte de crédit est obligatoire lors de la prise en charge de votre véhicule à Paris. La carte de crédit doit obligatoirement être au nom du conducteur principal. Les cartes de débit ne sont pas acceptées. Les principales cartes de crédit sont acceptées (Mastercard, Visa). La carte doit disposer de fonds suffisants pour couvrir le dépôt de garantie. Une caution sera bloquée sur la carte et libérée après le retour du véhicule en parfait état.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <div class="faq-icon">+</div>
+            <div class="faq-title">Quelle assurance faut-il pour ma voiture de location à Paris ?</div>
+          </div>
+          <div class="faq-answer">
+            Toutes nos offres de base incluent les couvertures légales obligatoires pour la France : responsabilité civile, assurance collision (CDW) et protection contre le vol (TP). Comme cette couverture de base comporte une franchise, nous vous recommandons d'opter pour notre Protection Complète. Lors du retrait, le loueur local peut proposer des options facultatives complémentaires.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <div class="faq-icon">+</div>
+            <div class="faq-title">Comment est la circulation à Paris ?</div>
+          </div>
+          <div class="faq-answer">
+            Comme dans toutes les grandes capitales, la circulation à Paris peut être dense, en particulier aux heures de pointe. Nous vous conseillons d'éviter les grands axes aux heures chargées. Paris compte de nombreuses voies uniques et zones piétonnes. Le boulevard Périphérique et l'A86 desservent la capitale et sa banlieue.
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <div class="faq-icon">+</div>
+            <div class="faq-title">Où puis-je garer ma voiture de location à Paris ?</div>
+          </div>
+          <div class="faq-answer">
+            Le stationnement dans votre hébergement est souvent la solution la plus économique. De nombreux parkings souterrains sécurisés sont disponibles dans la ville (ex. Notre-Dame, Quai Branly). Le stationnement sur voirie est payant du lundi au samedi de 09h00 à 20h00, et généralement gratuit les dimanches et jours fériés.
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <div class="faq-icon">+</div>
+            <div class="faq-title">Ai-je besoin d'une vignette Crit'Air à Paris ?</div>
+          </div>
+          <div class="faq-answer">
+            Oui, une vignette Crit'Air (vignette pollution) est requise pour circuler à Paris. En général, le véhicule de location en est déjà équipé. Veuillez vérifier auprès du loueur lors de la prise en charge. Seuls les véhicules équipés de vignettes autorisées peuvent circuler dans les Zones à Faibles Émissions (ZFE).
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <div class="faq-icon">+</div>
+            <div class="faq-title">Puis-je louer un camping-car à Paris ?</div>
+          </div>
+          <div class="faq-answer">
+            Oui ! La France propose de magnifiques itinéraires pour les voyages en camping-car. Tous nos camping-cars sont récents, entièrement équipés et offrent une totale liberté pour parcourir les régions françaises.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOURNISSEURS -->
   <section class="supplier-section">
     <div class="supplier-container">
       <div class="info-block" style="margin-bottom:20px;">
-        <h2>BOOK WITH THE BEST CAR RENTAL SUPPLIERS IN PARIS</h2>
-        <p>Auto Europe was founded in 1954 and has since grown into one of the top global car rental brokers. Through our trusted partners we are able to provide a large fleet of vehicles, convenient locations and a first-class customer service before, during and after your rental. Using our secure online booking engine customers are able to search, compare and book the very best car rental deal for their budget.</p>
+        <h2>RÉSERVEZ AVEC LES MEILLEURS LOUEURS À PARIS</h2>
+        <p>Grâce à nos partenaires de confiance, accédez à une large gamme de véhicules et bénéficiez d'un service client de qualité à tout moment.</p>
       </div>
 
       <div class="supplier-grid">
@@ -643,78 +942,76 @@
     </div>
   </section>
 
-  <!-- DESTINATIONS SECTION -->
+  <!-- DESTINATIONS -->
   <main class="main-container" id="destinations">
     <section class="destination-section">
-      <!-- TOP CITIES IN FRANCE -->
       <div class="destination-column">
-        <h3>TOP CITIES IN FRANCE</h3>
+        <h3>PRINCIPALES VILLES EN FRANCE</h3>
         <div class="destination-line"></div>
         <div class="destination-grid">
           <div class="destination-item" onclick="selectDestination('Paris, France')">
-            <span>Paris</span><strong>€13 <small>/ day*</small></strong>
+            <span>Paris</span><strong>13 € <small>/ jour*</small></strong>
           </div>
           <div class="destination-item" onclick="selectDestination('Nice, France')">
-            <span>Nice</span><strong>€15 <small>/ day*</small></strong>
+            <span>Nice</span><strong>15 € <small>/ jour*</small></strong>
           </div>
           <div class="destination-item" onclick="selectDestination('Lyon, France')">
-            <span>Lyon</span><strong>€14 <small>/ day*</small></strong>
+            <span>Lyon</span><strong>14 € <small>/ jour*</small></strong>
           </div>
           <div class="destination-item" onclick="selectDestination('Marseille, France')">
-            <span>Marseille</span><strong>€12 <small>/ day*</small></strong>
+            <span>Marseille</span><strong>12 € <small>/ jour*</small></strong>
           </div>
           <div class="destination-item" onclick="selectDestination('Toulouse, France')">
-            <span>Toulouse</span><strong>€11 <small>/ day*</small></strong>
+            <span>Toulouse</span><strong>11 € <small>/ jour*</small></strong>
           </div>
           <div class="destination-item" onclick="selectDestination('Bordeaux, France')">
-            <span>Bordeaux</span><strong>€14 <small>/ day*</small></strong>
+            <span>Bordeaux</span><strong>14 € <small>/ jour*</small></strong>
           </div>
         </div>
       </div>
 
-      <!-- NEARBY COUNTRIES TO FRANCE -->
       <div class="destination-column">
-        <h3>BEST RATES IN NEARBY COUNTRIES</h3>
+        <h3>PAYS VOISINS DE LA FRANCE</h3>
         <div class="destination-line"></div>
         <div class="destination-grid">
           <div class="destination-item" onclick="selectDestination('France')">
-            <span>France</span><strong>€13 <small>/ day*</small></strong>
+            <span>France</span><strong>13 € <small>/ jour*</small></strong>
           </div>
-          <div class="destination-item" onclick="selectDestination('Belgium')">
-            <span>Belgium</span><strong>€16 <small>/ day*</small></strong>
+          <div class="destination-item" onclick="selectDestination('Belgique')">
+            <span>Belgique</span><strong>16 € <small>/ jour*</small></strong>
           </div>
-          <div class="destination-item" onclick="selectDestination('Switzerland')">
-            <span>Switzerland</span><strong>€22 <small>/ day*</small></strong>
+          <div class="destination-item" onclick="selectDestination('Suisse')">
+            <span>Suisse</span><strong>22 € <small>/ jour*</small></strong>
           </div>
-          <div class="destination-item" onclick="selectDestination('Spain')">
-            <span>Spain</span><strong>€4 <small>/ day*</small></strong>
+          <div class="destination-item" onclick="selectDestination('Espagne')">
+            <span>Espagne</span><strong>4 € <small>/ jour*</small></strong>
           </div>
-          <div class="destination-item" onclick="selectDestination('Italy')">
-            <span>Italy</span><strong>€5 <small>/ day*</small></strong>
+          <div class="destination-item" onclick="selectDestination('Italie')">
+            <span>Italie</span><strong>5 € <small>/ jour*</small></strong>
           </div>
-          <div class="destination-item" onclick="selectDestination('Germany')">
-            <span>Germany</span><strong>€18 <small>/ day*</small></strong>
+          <div class="destination-item" onclick="selectDestination('Allemagne')">
+            <span>Allemagne</span><strong>18 € <small>/ jour*</small></strong>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- POPUP MODAL FOR CUSTOMER CARE -->
+  <!-- POPUP MODALE -->
   <div class="modal-overlay" id="popupModal">
     <div class="modal-card">
       <span class="close-modal" onclick="closeSupportPopup()">&times;</span>
-      <h3 id="modalSupplierTitle">Partner Support</h3>
-      <p>For instant booking assistance and direct special rates with this supplier, contact our customer support line:</p>
-      <a href="tel:+33805119691" class="call-btn">Call +33 805119691</a>
+      <h3 id="modalSupplierTitle">Assistance Client</h3>
+      <p>Pour toute assistance immédiate ou réservation directe, contactez notre service client :</p>
+      <a href="tel:+33805119691" class="call-btn">Appeler le +33 805119691</a>
     </div>
   </div>
 
-  <!-- FOOTER -->
+  <!-- PIED DE PAGE -->
   <footer id="contact">
     <div class="footer-container">
       <div class="footer-column">
-        <h3>Top Destinations</h3>
+        <h3>Destinations Populaires</h3>
         <a onclick="selectDestination('Paris, France')">Paris</a>
         <a onclick="selectDestination('Nice, France')">Nice</a>
         <a onclick="selectDestination('Lyon, France')">Lyon</a>
@@ -722,28 +1019,29 @@
       </div>
 
       <div class="footer-column">
-        <h3>Contact Us</h3>
-        <p>Customer Care: +33 805119691</p>
-        <p>Email: Helpdesksupportairline@gmail.com</p>
-        <p>Address: 124 Rue de Rivoli, 75001 Paris, France</p>
+        <h3>Contactez-nous</h3>
+        <p>Service Client : +33 805119691</p>
+        <p>E-mail : Helpdesksupportairline@gmail.com</p>
+        <p>Adresse : 124 Rue de Rivoli, 75001 Paris, France</p>
       </div>
 
       <div class="footer-column">
-        <h3>Company</h3>
-        <a href="#paris-info">About Us</a>
+        <h3>Société</h3>
+        <a href="#paris-info">À propos</a>
+        <a href="#airports">Aéroports</a>
         <a href="#contact">Contact</a>
-        <a href="#searchBox">Rental Deals</a>
+        <a href="#searchBox">Nos offres</a>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <span>© 2026 autoXeurope. All rights reserved. | Contact: Helpdesksupportairline@gmail.com</span>
+      <span>© 2026 autoXeurope. Tous droits réservés. | Contact : Helpdesksupportairline@gmail.com</span>
     </div>
   </footer>
 
-  <!-- JAVASCRIPT LOGIC -->
+  <!-- SCRIPT JAVASCRIPT -->
   <script>
-    // Background Slideshow
+    // Diaporama de fond
     const backgroundImages = [
       "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
       "https://images.unsplash.com/photo-1511527656417-2646c8f66292?auto=format&fit=crop&w=1200&q=80",
@@ -765,9 +1063,9 @@
       setInterval(updateBackground, 1000);
     }
 
-    // Modal Popup Logic
+    // Gestion de la modale Popup
     function openSupportPopup(supplierName) {
-      document.getElementById("modalSupplierTitle").textContent = supplierName + " Support";
+      document.getElementById("modalSupplierTitle").textContent = "Assistance " + supplierName;
       document.getElementById("popupModal").style.display = "flex";
     }
 
@@ -775,7 +1073,21 @@
       document.getElementById("popupModal").style.display = "none";
     }
 
-    // Initialize Page Controls
+    // FAQ Accordéon Logic
+    function toggleFaq(element) {
+      const answer = element.nextElementSibling;
+      const icon = element.querySelector('.faq-icon');
+      
+      if (answer.classList.contains('open')) {
+        answer.classList.remove('open');
+        icon.textContent = '+';
+      } else {
+        answer.classList.add('open');
+        icon.textContent = '−';
+      }
+    }
+
+    // Autocomplétion et initialisation
     document.addEventListener("DOMContentLoaded", () => {
       initializeBackgroundSlideshow();
 
@@ -828,7 +1140,7 @@
         dropdown.innerHTML = "";
 
         if (data.length === 0) {
-          dropdown.innerHTML = `<div class="suggestion-item">No places found</div>`;
+          dropdown.innerHTML = `<div class="suggestion-item">Aucun lieu trouvé</div>`;
           return;
         }
 
@@ -847,7 +1159,7 @@
           dropdown.appendChild(div);
         });
       } catch (error) {
-        console.error("Error fetching locations:", error);
+        console.error("Erreur de recherche :", error);
       }
     }
 
