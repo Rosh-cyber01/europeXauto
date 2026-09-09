@@ -1,3 +1,4 @@
+/* RESET & BASE STYLES */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -10,7 +11,7 @@ body {
   color: #333;
 }
 
-/* HEADER */
+/* HEADER & NAVBAR */
 .main-header {
   background: #ffffff;
   border-bottom: 2px solid #e2e8f0;
@@ -23,6 +24,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .brand .logo {
@@ -43,8 +46,13 @@ body {
   margin-top: 2px;
 }
 
+.navigation {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
 .navigation a {
-  margin: 0 12px;
   text-decoration: none;
   color: #1e293b;
   font-weight: 600;
@@ -73,7 +81,7 @@ body {
   text-decoration: none;
 }
 
-/* HERO & BACKGROUND SWITCHER */
+/* HERO SECTION */
 .hero {
   position: relative;
   background-size: cover;
@@ -109,7 +117,7 @@ body {
   color: #cbd5e1;
 }
 
-/* SEARCH BOX */
+/* SEARCH BOX & INPUTS */
 .search-box {
   background: #ffffff;
   border-radius: 8px;
@@ -121,7 +129,7 @@ body {
 
 .search-row {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 16px;
   margin-bottom: 16px;
 }
@@ -140,17 +148,41 @@ body {
   color: #475569;
 }
 
+/* Input + Quick Select Layout */
+.input-with-select {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-with-select input {
+  flex: 1;
+}
+
+.input-with-select select {
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e1;
+  color: #1e293b;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 .field input, .field select {
   padding: 10px 12px;
   border: 1px solid #cbd5e1;
   border-radius: 4px;
   font-size: 14px;
+  width: 100%;
+}
+
+.checkbox-row {
+  margin-bottom: 12px;
 }
 
 .checkbox-field {
   flex-direction: row;
   align-items: center;
-  margin-top: 18px;
 }
 
 .checkbox-field label {
@@ -162,7 +194,7 @@ body {
 
 .search-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: 1fr;
   gap: 12px;
   align-items: flex-end;
 }
@@ -176,12 +208,14 @@ body {
   border-radius: 4px;
   cursor: pointer;
   height: 42px;
+  width: 100%;
 }
 
 .search-btn:hover {
   background: #b45309;
 }
 
+/* AUTOCOMPLETE SUGGESTIONS */
 .suggestions {
   position: absolute;
   top: 100%;
@@ -189,21 +223,26 @@ body {
   right: 0;
   background: #fff;
   border: 1px solid #cbd5e1;
-  z-index: 10;
-  max-height: 150px;
+  border-radius: 0 0 6px 6px;
+  z-index: 100;
+  max-height: 200px;
   overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .suggestion-item {
-  padding: 8px 12px;
+  padding: 10px 12px;
   cursor: pointer;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 13px;
+  color: #1e293b;
 }
 
 .suggestion-item:hover {
   background: #f1f5f9;
 }
 
-/* CENTERED PARTNER BAR */
+/* PARTNER LOGO BAR */
 .partner-bar-centered {
   background: #ffffff;
   border-bottom: 1px solid #e2e8f0;
@@ -218,7 +257,8 @@ body {
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 15px;
+  padding: 0 15px;
 }
 
 .partner-name {
@@ -231,7 +271,7 @@ body {
 .partner-name.europcar { background: #15803d; color: #fff; padding: 2px 8px; border-radius: 3px; }
 .partner-name.hertz { border-bottom: 3px solid #facc15; }
 
-/* REVIEWS & WHY US */
+/* REVIEWS & TRUST SECTION */
 .trust-section {
   max-width: 1100px;
   margin: 40px auto;
@@ -240,12 +280,13 @@ body {
 
 .trust-container {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr;
   gap: 20px;
 }
 
 .reviews-wrapper {
   display: flex;
+  flex-direction: column;
   gap: 12px;
 }
 
@@ -305,7 +346,7 @@ body {
   color: #facc15;
 }
 
-/* DESTINATIONS SECTION */
+/* DESTINATIONS GRID */
 .main-container {
   max-width: 1100px;
   margin: 0 auto 40px auto;
@@ -320,12 +361,12 @@ body {
 
 .destination-section {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 30px;
 }
 
 .destination-column h3 {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 900;
   margin-bottom: 8px;
   color: #0b2545;
@@ -339,14 +380,14 @@ body {
 
 .destination-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 8px 24px;
 }
 
 .destination-item {
   display: flex;
   justify-content: space-between;
-  padding: 6px 0;
+  padding: 8px 0;
   border-bottom: 1px solid #f1f5f9;
   cursor: pointer;
 }
@@ -382,8 +423,9 @@ footer {
 .footer-container {
   max-width: 1100px;
   margin: 0 auto;
-  display: flex;
-  gap: 40px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px;
 }
 
 .footer-column h3 {
@@ -413,4 +455,61 @@ footer {
   text-align: center;
   font-size: 12px;
   color: #94a3b8;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+
+/* Tablet (min-width: 640px) */
+@media (min-width: 640px) {
+  .search-row {
+    flex-direction: row;
+  }
+
+  .input-with-select {
+    flex-direction: row;
+  }
+
+  .input-with-select select {
+    width: 200px;
+  }
+
+  .search-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .reviews-wrapper {
+    flex-direction: row;
+  }
+
+  .destination-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop (min-width: 900px) */
+@media (min-width: 900px) {
+  .search-grid {
+    grid-template-columns: 1fr 1fr 1fr auto;
+  }
+
+  .search-btn {
+    width: auto;
+    padding: 0 24px;
+  }
+
+  .trust-container {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .destination-section {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
