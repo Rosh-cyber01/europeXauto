@@ -1,26 +1,24 @@
-/* LOCATION DATA & BACKGROUND ICONS */
+/* LOCATION DATA & DYNAMIC BACKGROUNDS */
 const locationData = {
+  paris: { name: "Paris", country: "France", lang: "fr", bgIcon: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80" },
+  nice: { name: "Nice", country: "France", lang: "fr", bgIcon: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80" },
+  lyon: { name: "Lyon", country: "France", lang: "fr", bgIcon: "https://images.unsplash.com/photo-1524168272322-bf77516fc880?auto=format&fit=crop&w=1200&q=80" },
+  marseille: { name: "Marseille", country: "France", lang: "fr", bgIcon: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=1200&q=80" },
   milan: { name: "Milan", country: "Italy", lang: "it", bgIcon: "https://images.unsplash.com/photo-1513581166391-887a96ddeafd?auto=format&fit=crop&w=1200&q=80" },
   munich: { name: "Munich", country: "Germany", lang: "de", bgIcon: "https://images.unsplash.com/photo-1595867818082-083862f3d630?auto=format&fit=crop&w=1200&q=80" },
-  lisbon: { name: "Lisbon", country: "Portugal", lang: "pt", bgIcon: "https://images.unsplash.com/photo-1503917988258-f87a78e3c995?auto=format&fit=crop&w=1200&q=80" },
-  paris: { name: "Paris", country: "France", lang: "fr", bgIcon: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80" },
   barcelona: { name: "Barcelona", country: "Spain", lang: "es", bgIcon: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=80" },
-  athens: { name: "Athens", country: "Greece", lang: "el", bgIcon: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80" },
   amsterdam: { name: "Amsterdam", country: "Netherlands", lang: "nl", bgIcon: "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1200&q=80" },
-  italy: { name: "Italy", country: "Italy", lang: "it", bgIcon: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80" },
   france: { name: "France", country: "France", lang: "fr", bgIcon: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80" },
-  spain: { name: "Spain", country: "Spain", lang: "es", bgIcon: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=80" },
-  portugal: { name: "Portugal", country: "Portugal", lang: "pt", bgIcon: "https://images.unsplash.com/photo-1503917988258-f87a78e3c995?auto=format&fit=crop&w=1200&q=80" },
+  italy: { name: "Italy", country: "Italy", lang: "it", bgIcon: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80" },
   germany: { name: "Germany", country: "Germany", lang: "de", bgIcon: "https://images.unsplash.com/photo-1595867818082-083862f3d630?auto=format&fit=crop&w=1200&q=80" },
-  greece: { name: "Greece", country: "Greece", lang: "el", bgIcon: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80" },
-  usa: { name: "USA", country: "USA", lang: "en", bgIcon: "https://images.unsplash.com/photo-1506146332389-18140dc7b2fb?auto=format&fit=crop&w=1200&q=80" }
+  spain: { name: "Spain", country: "Spain", lang: "es", bgIcon: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=80" }
 };
 
-/* TRANSLATIONS DATA */
+/* MULTI-LANGUAGE TRANSLATIONS */
 const translations = {
   en: {
     customerCare: "CUSTOMER CARE",
-    navDeals: "Deals", navDestinations: "Destinations", navReviews: "Reviews", navWhy: "Why Us", navContact: "Contact",
+    navDeals: "Deals", navDestinations: "Destinations", navReviews: "Reviews", navWhy: "Why Us",
     heroTitle: "Compare Car Rental Deals Across Europe",
     heroSubtitle: "Find the right car at the right price from leading rental companies.",
     pickupLocation: "Pick-up Location", dropoffLocation: "Drop-off Location", differentDropoff: "Return car to a different location",
@@ -31,7 +29,7 @@ const translations = {
   },
   fr: {
     customerCare: "SERVICE CLIENT",
-    navDeals: "Offres", navDestinations: "Destinations", navReviews: "Avis", navWhy: "Pourquoi Nous", navContact: "Contact",
+    navDeals: "Offres", navDestinations: "Destinations", navReviews: "Avis", navWhy: "Pourquoi Nous",
     heroTitle: "Comparez les offres de location de voitures en Europe",
     heroSubtitle: "Trouvez la bonne voiture au meilleur prix auprès des grands loueurs.",
     pickupLocation: "Lieu de prise en charge", dropoffLocation: "Lieu de restitution", differentDropoff: "Restituer dans un autre lieu",
@@ -42,7 +40,7 @@ const translations = {
   },
   it: {
     customerCare: "ASSISTENZA CLIENTI",
-    navDeals: "Offerte", navDestinations: "Destinazioni", navReviews: "Recensioni", navWhy: "Perché Noi", navContact: "Contatti",
+    navDeals: "Offerte", navDestinations: "Destinazioni", navReviews: "Recensioni", navWhy: "Perché Noi",
     heroTitle: "Confronta il noleggio auto in Europa",
     heroSubtitle: "Trova l'auto ideale al miglior prezzo.",
     pickupLocation: "Luogo di ritiro", dropoffLocation: "Luogo di riconsegna", differentDropoff: "Riconsegna in un altro luogo",
@@ -53,7 +51,7 @@ const translations = {
   },
   de: {
     customerCare: "KUNDENSERVICE",
-    navDeals: "Angebote", navDestinations: "Ziele", navReviews: "Bewertungen", navWhy: "Warum Wir", navContact: "Kontakt",
+    navDeals: "Angebote", navDestinations: "Ziele", navReviews: "Bewertungen", navWhy: "Warum Wir",
     heroTitle: "Mietwagenangebote in Europa vergleichen",
     heroSubtitle: "Finden Sie das passende Fahrzeug zum besten Preis.",
     pickupLocation: "Abholort", dropoffLocation: "Rückgabeort", differentDropoff: "An anderem Ort zurückgeben",
@@ -64,7 +62,7 @@ const translations = {
   },
   es: {
     customerCare: "ATENCIÓN AL CLIENTE",
-    navDeals: "Ofertas", navDestinations: "Destinos", navReviews: "Reseñas", navWhy: "Por Qué Elegirnos", navContact: "Contacto",
+    navDeals: "Ofertas", navDestinations: "Destinos", navReviews: "Reseñas", navWhy: "Por Qué Elegirnos",
     heroTitle: "Compara coches de alquiler en Europa",
     heroSubtitle: "Encuentra el coche adecuado al mejor precio.",
     pickupLocation: "Lugar de recogida", dropoffLocation: "Lugar de devolución", differentDropoff: "Devolver en otro lugar",
@@ -75,11 +73,11 @@ const translations = {
   }
 };
 
-/* COUNTRY-SPECIFIC REVIEWS */
+/* REGION-SPECIFIC REVIEWS */
 const countryReviews = {
   france: [
     { text: "Super smooth pick-up at CDG Airport in Paris. Car was spotless!", author: "PIERRE M." },
-    { text: "Auto Europe is reliable. Got a neat Renault Clio for our road trip.", author: "SOPHIE T." }
+    { text: "Reliable service. Got a neat Renault Clio for our Cote d'Azur road trip.", author: "SOPHIE T." }
   ],
   italy: [
     { text: "Excellent experience driving around Milan and Tuscany!", author: "MARCO R." },
@@ -106,12 +104,18 @@ document.addEventListener("DOMContentLoaded", () => {
     dropoffField.style.display = e.target.checked ? "flex" : "none";
   });
 
-  // Attach Location Autocomplete API to Inputs
   setupLocationAutocomplete("pickupLocation", "pickupSuggestions");
   setupLocationAutocomplete("dropoffLocation", "dropoffSuggestions");
 });
 
-/* OPENSTREETMAP NOMINATIM API FOR CITIES, AIRPORTS & STATIONS */
+/* QUICK LOCATION SELECTOR HANDLER */
+function handleQuickSelect(key) {
+  if (key) {
+    selectLocation(key);
+  }
+}
+
+/* OPENSTREETMAP NOMINATIM API FOR CITIES, AIRPORTS, STATIONS, UNIVERSITIES & LANDMARKS */
 let searchDebounce = null;
 
 function setupLocationAutocomplete(inputId, dropdownId) {
@@ -129,13 +133,11 @@ function setupLocationAutocomplete(inputId, dropdownId) {
       return;
     }
 
-    // Debounce to prevent flooding the API with too many requests
     searchDebounce = setTimeout(() => {
       fetchLocationSuggestions(query, dropdown, input);
     }, 300);
   });
 
-  // Hide dropdown when clicking outside
   document.addEventListener("click", (e) => {
     if (!input.contains(e.target) && !dropdown.contains(e.target)) {
       dropdown.innerHTML = "";
@@ -145,7 +147,6 @@ function setupLocationAutocomplete(inputId, dropdownId) {
 
 async function fetchLocationSuggestions(query, dropdown, input) {
   try {
-    // OpenStreetMap API query targeting transit hubs, stations, airports, and landmarks
     const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&addressdetails=1&limit=6`;
     const response = await fetch(url);
     const data = await response.json();
@@ -160,16 +161,11 @@ async function fetchLocationSuggestions(query, dropdown, input) {
     data.forEach(place => {
       const div = document.createElement("div");
       div.className = "suggestion-item";
-
-      // Display name formatting (e.g. Airport, Station, or Landmark)
-      const placeName = place.display_name;
-      div.textContent = placeName;
+      div.textContent = place.display_name;
 
       div.addEventListener("click", () => {
-        input.value = placeName;
+        input.value = place.display_name;
         dropdown.innerHTML = "";
-
-        // Check if the location corresponds to a known country to switch language & icon
         detectAndSwitchRegion(place.address);
       });
 
@@ -185,7 +181,6 @@ function detectAndSwitchRegion(address) {
 
   const countryName = address.country.toLowerCase();
 
-  // Find matching key in locationData
   const matchKey = Object.keys(locationData).find(key => 
     locationData[key].country.toLowerCase() === countryName || key === countryName
   );
@@ -199,10 +194,12 @@ function selectLocation(key) {
   const item = locationData[key];
   if (!item) return;
 
-  // 1. Set input value
+  // 1. Set location input & quick select dropdown
   document.getElementById("pickupLocation").value = item.name + ", " + item.country;
+  const quickSelect = document.getElementById("quickLocationSelect");
+  if (quickSelect) quickSelect.value = key;
 
-  // 2. Change dynamic Hero Background Image
+  // 2. Switch Hero background image
   const hero = document.getElementById("heroSection");
   hero.style.backgroundImage = `url('${item.bgIcon}')`;
 
@@ -210,11 +207,11 @@ function selectLocation(key) {
   const langKey = item.lang && translations[item.lang] ? item.lang : 'en';
   applyLanguage(langKey);
 
-  // 4. Load region-specific reviews
+  // 4. Update reviews based on country
   const reviewKey = item.country.toLowerCase();
   renderReviews(countryReviews[reviewKey] ? reviewKey : 'default');
 
-  // Smooth scroll up to search box
+  // 5. Scroll smoothly up to search bar
   hero.scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -235,6 +232,8 @@ function applyLanguage(lang) {
 function renderReviews(countryKey) {
   const reviews = countryReviews[countryKey] || countryReviews.default;
   const container = document.getElementById("reviewsContainer");
+  if (!container) return;
+
   container.innerHTML = "";
 
   reviews.forEach(rev => {
