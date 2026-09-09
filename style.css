@@ -28,36 +28,6 @@ body {
   gap: 15px;
 }
 
-/* Phone Number strictly on the LEFT in ALL views */
-.customer-care {
-  text-align: left;
-  order: 1;
-}
-
-.care-label {
-  display: block;
-  font-size: 10px;
-  color: #64748b;
-  letter-spacing: 0.5px;
-  font-weight: bold;
-}
-
-.phone-number {
-  font-size: 18px;
-  font-weight: 800;
-  color: #0b2545;
-  text-decoration: none;
-}
-
-.phone-number:hover {
-  color: #d97706;
-}
-
-.brand {
-  order: 2;
-  text-align: center;
-}
-
 .brand .logo {
   font-size: 28px;
   font-weight: 900;
@@ -77,7 +47,6 @@ body {
 }
 
 .navigation {
-  order: 3;
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
@@ -92,6 +61,24 @@ body {
 
 .navigation a:hover {
   color: #d97706;
+}
+
+.customer-care {
+  text-align: right;
+}
+
+.care-label {
+  display: block;
+  font-size: 10px;
+  color: #64748b;
+  letter-spacing: 0.5px;
+}
+
+.phone-number {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0b2545;
+  text-decoration: none;
 }
 
 /* HERO SECTION */
@@ -235,18 +222,12 @@ body {
   background: #f1f5f9;
 }
 
-/* PARTNER LOGO BARS */
+/* PARTNER LOGO BAR */
 .partner-bar-centered {
   background: #ffffff;
   border-bottom: 1px solid #e2e8f0;
-  padding: 18px 0;
+  padding: 16px 0;
   text-align: center;
-}
-
-.secondary-partner-bar {
-  border-top: 1px solid #e2e8f0;
-  margin-top: 40px;
-  background: #f1f5f9;
 }
 
 .partner-container {
@@ -264,46 +245,11 @@ body {
   font-size: 20px;
   font-weight: 900;
   color: #334155;
-  cursor: pointer;
-  transition: transform 0.2s;
-  user-select: none;
-}
-
-.partner-name:hover {
-  transform: scale(1.08);
 }
 
 .partner-name.avis { color: #d97706; }
 .partner-name.europcar { background: #15803d; color: #fff; padding: 2px 8px; border-radius: 3px; }
 .partner-name.hertz { border-bottom: 3px solid #facc15; }
-.partner-name.sixt { color: #ea580c; }
-.partner-name.enterprise { color: #047857; }
-
-/* MIDDLE CONTENT SECTION */
-.middle-content-section {
-  background: #ffffff;
-  padding: 50px 20px;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.middle-content-section .content-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  line-height: 1.7;
-  color: #334155;
-}
-
-.middle-content-section h2 {
-  font-size: 26px;
-  color: #0b2545;
-  margin-bottom: 18px;
-  font-weight: 800;
-}
-
-.middle-content-section p {
-  margin-bottom: 16px;
-  font-size: 15px;
-}
 
 /* REVIEWS & TRUST SECTION */
 .trust-section {
@@ -447,43 +393,6 @@ body {
   text-align: center;
 }
 
-/* FAQ SECTION */
-.faq-section {
-  background: #ffffff;
-  padding: 50px 20px;
-  border-top: 1px solid #e2e8f0;
-}
-
-.faq-container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.faq-container h2 {
-  font-size: 24px;
-  color: #0b2545;
-  margin-bottom: 24px;
-  border-bottom: 2px solid #facc15;
-  padding-bottom: 8px;
-  display: inline-block;
-}
-
-.faq-item {
-  margin-bottom: 20px;
-}
-
-.faq-item h3 {
-  font-size: 16px;
-  color: #1e293b;
-  margin-bottom: 6px;
-}
-
-.faq-item p {
-  font-size: 14px;
-  line-height: 1.6;
-  color: #475569;
-}
-
 /* FOOTER */
 footer {
   background: #1e293b;
@@ -526,87 +435,6 @@ footer {
   text-align: center;
   font-size: 12px;
   color: #94a3b8;
-}
-
-/* POP-UP MODAL STYLES */
-.modal-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(11, 37, 69, 0.7);
-  z-index: 9999;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.modal-content {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 8px;
-  max-width: 450px;
-  width: 100%;
-  position: relative;
-  text-align: center;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-}
-
-.modal-close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 24px;
-  border: none;
-  background: none;
-  cursor: pointer;
-  color: #64748b;
-}
-
-.modal-content h3 {
-  color: #0b2545;
-  font-size: 20px;
-  margin-bottom: 12px;
-}
-
-.modal-content p {
-  color: #475569;
-  font-size: 14px;
-  margin-bottom: 20px;
-  line-height: 1.5;
-}
-
-.modal-phone-box {
-  background: #f8fafc;
-  border: 2px dashed #d97706;
-  padding: 16px;
-  border-radius: 6px;
-}
-
-.modal-phone-label {
-  display: block;
-  font-size: 11px;
-  font-weight: 800;
-  color: #64748b;
-  margin-bottom: 8px;
-}
-
-.modal-call-btn {
-  display: inline-block;
-  background: #d97706;
-  color: #ffffff;
-  padding: 12px 20px;
-  text-decoration: none;
-  font-weight: 800;
-  border-radius: 4px;
-  font-size: 16px;
-  transition: background 0.2s;
-}
-
-.modal-call-btn:hover {
-  background: #b45309;
 }
 
 /* RESPONSIVE BREAKPOINTS */
