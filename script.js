@@ -73,7 +73,7 @@ const translations = {
   }
 };
 
-/* REVIEWS DATA */
+/* REGION-SPECIFIC REVIEWS */
 const countryReviews = {
   france: [
     { text: "Super smooth pick-up at CDG Airport in Paris. Car was spotless!", author: "PIERRE M." },
@@ -93,7 +93,7 @@ const countryReviews = {
   ]
 };
 
-/* INITIALIZATION */
+/* EVENT HANDLERS & INITIALIZATION */
 document.addEventListener("DOMContentLoaded", () => {
   renderReviews('default');
 
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupLocationAutocomplete("dropoffLocation", "dropoffSuggestions");
 });
 
-/* OPENSTREETMAP NOMINATIM AUTOCOMPLETE */
+/* OPENSTREETMAP NOMINATIM API FOR AUTOCOMPLETE */
 let searchDebounce = null;
 
 function setupLocationAutocomplete(inputId, dropdownId) {
@@ -187,22 +187,22 @@ function selectLocation(key) {
   const item = locationData[key];
   if (!item) return;
 
-  // Set input value
+  // 1. Set location input
   document.getElementById("pickupLocation").value = item.name + ", " + item.country;
 
-  // Change background image
+  // 2. Switch Hero background image
   const hero = document.getElementById("heroSection");
   hero.style.backgroundImage = `url('${item.bgIcon}')`;
 
-  // Switch language
+  // 3. Switch Language
   const langKey = item.lang && translations[item.lang] ? item.lang : 'en';
   applyLanguage(langKey);
 
-  // Update reviews
+  // 4. Update reviews based on country
   const reviewKey = item.country.toLowerCase();
   renderReviews(countryReviews[reviewKey] ? reviewKey : 'default');
 
-  // Scroll to search area
+  // 5. Scroll smoothly up to search bar
   hero.scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -237,33 +237,4 @@ function renderReviews(countryKey) {
     `;
     container.appendChild(card);
   });
-}
-
-/* MODAL POP-UP LOGIC */
-function showPartnerModal(partnerName) {
-  document.getElementById("modalTitle").textContent = `${partnerName} Rental Partner`;
-  document.getElementById("modalBody").textContent = `To book or inquire directly with ${partnerName} rates in Paris & Europe, contact our dedicated support desk.`;
-  document.getElementById("modalOverlay").style.display = "flex";
-}
-
-function handleSearchSubmit(event) {
-  event.preventDefault();
-
-  const location = document.getElementById("pickupLocation").value;
-  const pickupDate = document.getElementById("pickupDate").value;
-  const returnDate = document.getElementById("returnDate").value;
-
-  document.getElementById("modalTitle").textContent = "Details Received!";
-  document.getElementById("modalBody").textContent = `Your rental request for ${location} (${pickupDate} to ${returnDate}) has been recorded. Call us now to lock in the lowest price!`;
-  document.getElementById("modalOverlay").style.display = "flex";
-}
-
-function closeModal(event) {
-  if (event.target.id === "modalOverlay") {
-    document.getElementById("modalOverlay").style.display = "none";
-  }
-}
-
-function closeModalDirect() {
-  document.getElementById("modalOverlay").style.display = "none";
 }
