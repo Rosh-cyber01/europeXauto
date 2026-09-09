@@ -11,6 +11,12 @@
   <!-- HEADER / NAVBAR -->
   <header class="main-header">
     <div class="header-container">
+      <!-- Phone Number on the LEFT side across all views -->
+      <div class="customer-care">
+        <span class="care-label" data-i18n="customerCare">CUSTOMER CARE</span>
+        <a href="tel:+18005550199" class="phone-number">+1 (800) 555-0199</a>
+      </div>
+
       <div class="brand">
         <a href="#" class="logo">Europe<span>X</span>Auto</a>
         <div class="tagline">CAR RENTALS IN EUROPE & FRANCE</div>
@@ -22,11 +28,6 @@
         <a href="#reviews" data-i18n="navReviews">Reviews</a>
         <a href="#whyUs" data-i18n="navWhy">Why Us</a>
       </nav>
-
-      <div class="customer-care">
-        <span class="care-label" data-i18n="customerCare">CUSTOMER CARE</span>
-        <a href="tel:+18005550199" class="phone-number">+1 (800) 555-0199</a>
-      </div>
     </div>
   </header>
 
@@ -38,29 +39,12 @@
         <p data-i18n="heroSubtitle">Find the right car at the right price from leading rental companies.</p>
 
         <!-- SEARCH FORM -->
-        <div class="search-box">
+        <form class="search-box" id="carSearchForm" onsubmit="handleSearchSubmit(event)">
           <div class="search-row">
-            <!-- Pickup Field with Quick Destinations Menu -->
+            <!-- Pickup Field (Quick Select removed) -->
             <div class="field">
               <label for="pickupLocation" data-i18n="pickupLocation">Pick-up Location</label>
-              <div class="input-with-select">
-                <input type="text" id="pickupLocation" placeholder="Type city, airport, station..." autocomplete="off">
-                <select id="quickLocationSelect" onchange="handleQuickSelect(this.value)">
-                  <option value="" disabled selected>— Quick Destinations —</option>
-                  <optgroup label="Popular France">
-                    <option value="paris">Paris (CDG / Orly / Station)</option>
-                    <option value="nice">Nice (NCE / French Riviera)</option>
-                    <option value="lyon">Lyon (Saint-Exupéry)</option>
-                    <option value="marseille">Marseille (Provence)</option>
-                  </optgroup>
-                  <optgroup label="Popular Europe">
-                    <option value="milan">Milan, Italy</option>
-                    <option value="munich">Munich, Germany</option>
-                    <option value="barcelona">Barcelona, Spain</option>
-                    <option value="amsterdam">Amsterdam, Netherlands</option>
-                  </optgroup>
-                </select>
-              </div>
+              <input type="text" id="pickupLocation" placeholder="Type city, airport, station..." autocomplete="off" required>
               <div id="pickupSuggestions" class="suggestions"></div>
             </div>
 
@@ -83,12 +67,12 @@
           <div class="search-grid">
             <div class="field">
               <label for="pickupDate" data-i18n="pickupDate">Pick-up Date</label>
-              <input type="date" id="pickupDate">
+              <input type="date" id="pickupDate" required>
             </div>
 
             <div class="field">
               <label for="returnDate" data-i18n="returnDate">Return Date</label>
-              <input type="date" id="returnDate">
+              <input type="date" id="returnDate" required>
             </div>
 
             <div class="field">
@@ -100,21 +84,35 @@
               </select>
             </div>
 
-            <button type="button" class="search-btn" data-i18n="searchCars">SEARCH CARS</button>
+            <button type="submit" class="search-btn" data-i18n="searchCars">SEARCH CARS</button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </section>
 
-  <!-- PARTNER LOGO BAR -->
+  <!-- TOP PARTNER LOGO BAR -->
   <section class="partner-bar-centered">
     <div class="partner-container">
-      <span class="partner-name avis">AVIS</span>
-      <span class="partner-name europcar">Europcar</span>
-      <span class="partner-name hertz">Hertz</span>
-      <span class="partner-name">SIXT</span>
-      <span class="partner-name">Enterprise</span>
+      <span class="partner-name avis" onclick="showPartnerModal('AVIS')">AVIS</span>
+      <span class="partner-name europcar" onclick="showPartnerModal('Europcar')">Europcar</span>
+      <span class="partner-name hertz" onclick="showPartnerModal('Hertz')">Hertz</span>
+      <span class="partner-name sixt" onclick="showPartnerModal('SIXT')">SIXT</span>
+      <span class="partner-name enterprise" onclick="showPartnerModal('Enterprise')">Enterprise</span>
+    </div>
+  </section>
+
+  <!-- MIDDLE SECTION: DISCOVER AFFORDABLE DEALS IN PARIS -->
+  <section class="middle-content-section">
+    <div class="content-container">
+      <h2>Car Rental in Paris - Discover Affordable Deals</h2>
+      <p>With Paris' fine dining and historical monuments that exude charm and romance, you will quickly discover that a car rental in France is a perfect way to travel around Paris to visit places of interest at your leisure. Home to the famous Notre Dame Cathedral, the magnificent Eiffel Tower, and the mysterious Catacombs, it's no wonder Paris has become one of the most popular destinations on the planet. Whether you're looking for a luxury rental car in Paris or prefer a compact car, we have a wide range of vehicles available! Auto Europe is your one-stop shop for the best service and price, guaranteed!</p>
+      
+      <p>While the city of lights is an exciting destination, booking a rental car in Paris with Auto Europe allows you to see even more! Enjoy day trips out of Paris to the Chateau de Versailles, Fontainebleau, and Chartres, to name just a few. Slip behind the wheel of a sporty convertible and leave the Eiffel Tower behind for a few hours as you enjoy a champagne tour at Reims or Epernay.</p>
+      
+      <p>Escape the bustle of Paris for a quaint stroll through the charming city of Rouen! Linger over local delicacies for a memorable lunch before hopping into your Paris car rental and heading back to the most romantic city in the world for a night on the town. Renting a car is the perfect way to enhance your trip. It allows you to see and do more than possible without the freedom a rental car provides.</p>
+      
+      <p>Save on your rental car in Paris when you book with Auto Europe today! We work with the top car suppliers in Paris and across France. Using our booking engine, compare supplier rates in seconds to find your trip's ideal rate and vehicle. With our price match guarantee, there is no reason to wait; if you see a better rate with one of our suppliers before pick-up, we'll beat that price!</p>
     </div>
   </section>
 
@@ -198,6 +196,49 @@
     <p class="price-note" data-i18n="priceNote">*Rates shown are per day, based upon a 7-day rental. Taxes and additional surcharges may apply.</p>
   </main>
 
+  <!-- SECONDARY PARTNER LOGO BAR (LOWER SECTION) -->
+  <section class="partner-bar-centered secondary-partner-bar">
+    <div class="partner-container">
+      <span class="partner-name avis" onclick="showPartnerModal('AVIS')">AVIS</span>
+      <span class="partner-name europcar" onclick="showPartnerModal('Europcar')">Europcar</span>
+      <span class="partner-name hertz" onclick="showPartnerModal('Hertz')">Hertz</span>
+      <span class="partner-name sixt" onclick="showPartnerModal('SIXT')">SIXT</span>
+      <span class="partner-name enterprise" onclick="showPartnerModal('Enterprise')">Enterprise</span>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section">
+    <div class="faq-container">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <h3>How old do I need to be to rent a car in Paris?</h3>
+        <p>To rent a car in Paris, you must be at least 21 years old and have held your license for at least 1 year. Specific car categories or luxury vehicles may have restrictions and require drivers to be at least 25 years old. All drivers under 25 should check if a young driver surcharge is included in their rental rate.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Can I rent a car without a credit card in Paris?</h3>
+        <p>It is necessary to have a credit card to rent a car in Paris. When you arrive at the rental counter to pick up your vehicle, you are required to present a valid credit card in the name of the primary driver indicated on your voucher. Additionally, the card must have enough available credit to cover the security deposit.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>What car rental insurance is included in Paris?</h3>
+        <p>Travelers picking up their rental car in Paris should know that all drivers must carry unlimited third-party liability insurance. With Auto Europe, the cost is already included in our daily rental rates. This protects travelers from injury, death, and property damage to others while behind the wheel of their car. While some major credit cards offer cardholders car rental insurance, not all car rental suppliers will accept this.<br>Check with Auto Europe or your supplier before your trip to determine what coverage you need and where you will purchase it. Insurance purchased at the car rental counter can be more expensive than purchasing it at pick-up time. Learn more about required and optional rental car insurance in Paris with Auto Europe.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Do I need an International Driving Permit to rent a car in in Paris?</h3>
+        <p>It is strongly recommended that you carry an International Driving Permit (IDP) when driving a rental car in Paris. However, you may drive with a valid driver's license if it is accompanied by a notarized translation in French.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Do I need to pay tolls when driving my car rental in Paris?</h3>
+        <p>Yes, any tolls that you may encounter in Paris and throughout France will have to be paid.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-container">
@@ -227,6 +268,21 @@
       &copy; EuropeXAuto. All rights reserved.
     </div>
   </footer>
+
+  <!-- POP-UP MODAL FOR CUSTOMER CARE & PARTNERS -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModalDirect()">&times;</button>
+      <h3 id="modalTitle">Customer Support</h3>
+      <p id="modalBody">Need help with your reservation or partner details?</p>
+      <div class="modal-phone-box">
+        <span class="modal-phone-label">24/7 CUSTOMER CARE</span>
+        <a href="tel:+18005550199" class="modal-call-btn">
+          📞 CALL +1 (800) 555-0199
+        </a>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
