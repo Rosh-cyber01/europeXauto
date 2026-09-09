@@ -73,7 +73,7 @@ const translations = {
   }
 };
 
-/* REGION-SPECIFIC REVIEWS */
+/* REVIEWS DATA */
 const countryReviews = {
   france: [
     { text: "Super smooth pick-up at CDG Airport in Paris. Car was spotless!", author: "PIERRE M." },
@@ -93,7 +93,7 @@ const countryReviews = {
   ]
 };
 
-/* EVENT HANDLERS & INITIALIZATION */
+/* INITIALIZATION */
 document.addEventListener("DOMContentLoaded", () => {
   renderReviews('default');
 
@@ -108,14 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupLocationAutocomplete("dropoffLocation", "dropoffSuggestions");
 });
 
-/* QUICK LOCATION SELECTOR HANDLER */
-function handleQuickSelect(key) {
-  if (key) {
-    selectLocation(key);
-  }
-}
-
-/* OPENSTREETMAP NOMINATIM API FOR CITIES, AIRPORTS, STATIONS, UNIVERSITIES & LANDMARKS */
+/* OPENSTREETMAP NOMINATIM AUTOCOMPLETE */
 let searchDebounce = null;
 
 function setupLocationAutocomplete(inputId, dropdownId) {
@@ -194,24 +187,22 @@ function selectLocation(key) {
   const item = locationData[key];
   if (!item) return;
 
-  // 1. Set location input & quick select dropdown
+  // Set input value
   document.getElementById("pickupLocation").value = item.name + ", " + item.country;
-  const quickSelect = document.getElementById("quickLocationSelect");
-  if (quickSelect) quickSelect.value = key;
 
-  // 2. Switch Hero background image
+  // Change background image
   const hero = document.getElementById("heroSection");
   hero.style.backgroundImage = `url('${item.bgIcon}')`;
 
-  // 3. Switch Language
+  // Switch language
   const langKey = item.lang && translations[item.lang] ? item.lang : 'en';
   applyLanguage(langKey);
 
-  // 4. Update reviews based on country
+  // Update reviews
   const reviewKey = item.country.toLowerCase();
   renderReviews(countryReviews[reviewKey] ? reviewKey : 'default');
 
-  // 5. Scroll smoothly up to search bar
+  // Scroll to search area
   hero.scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -246,4 +237,33 @@ function renderReviews(countryKey) {
     `;
     container.appendChild(card);
   });
+}
+
+/* MODAL POP-UP LOGIC */
+function showPartnerModal(partnerName) {
+  document.getElementById("modalTitle").textContent = `${partnerName} Rental Partner`;
+  document.getElementById("modalBody").textContent = `To book or inquire directly with ${partnerName} rates in Paris & Europe, contact our dedicated support desk.`;
+  document.getElementById("modalOverlay").style.display = "flex";
+}
+
+function handleSearchSubmit(event) {
+  event.preventDefault();
+
+  const location = document.getElementById("pickupLocation").value;
+  const pickupDate = document.getElementById("pickupDate").value;
+  const returnDate = document.getElementById("returnDate").value;
+
+  document.getElementById("modalTitle").textContent = "Details Received!";
+  document.getElementById("modalBody").textContent = `Your rental request for ${location} (${pickupDate} to ${returnDate}) has been recorded. Call us now to lock in the lowest price!`;
+  document.getElementById("modalOverlay").style.display = "flex";
+}
+
+function closeModal(event) {
+  if (event.target.id === "modalOverlay") {
+    document.getElementById("modalOverlay").style.display = "none";
+  }
+}
+
+function closeModalDirect() {
+  document.getElementById("modalOverlay").style.display = "none";
 }
