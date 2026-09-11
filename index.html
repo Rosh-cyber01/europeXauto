@@ -1,143 +1,277 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DriveGlobal | Worldwide Car Rentals</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EuropeXauto - Location de Voiture en France et en Europe</title>
+  <meta name="keywords" content="location voiture france, louer une voiture france, service client location voiture, auto europe téléphone">
+  <meta name="description" content="Réservez votre voiture de location avec EuropeXauto en France et dans toute l'Europe.">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Top Navigation -->
-  <header class="navbar">
-    <div class="logo">Drive<span>Global</span></div>
-    
-    <nav class="nav-links">
-      <a href="#home" id="navHome">Home</a>
-      <a href="#fleet" id="navFleet">Fleet</a>
-      <a href="#booking" id="navBooking">Search Cars</a>
-      <a href="#faq" id="navFaq">FAQ</a>
-    </nav>
+  <!-- Loading Overlay for Page Transition -->
+  <div id="country-loader" class="page-loader" style="display: none;">
+    <div class="loader-spinner"></div>
+    <p id="loader-text">Chargement des données...</p>
+  </div>
 
-    <!-- Custom Country / Language Selector Button -->
-    <button class="country-selector-btn" id="countrySelectorBtn">
-      <span id="currentFlag">🌐</span>
-      <span id="currentCountry">United States</span>
-      <span class="arrow">▼</span>
-    </button>
+  <!-- Header Section -->
+  <header class="main-header">
+    <div class="header-container">
+      <div class="brand-logo">
+        <a href="index.html" class="logo-link">
+          <span class="brand-title">EuropeXauto</span>
+          <span class="brand-subtext">great prices and best service since 1964</span>
+        </a>
+      </div>
+
+      <div class="header-right">
+        <!-- Country Selector -->
+        <div class="country-selector-wrapper">
+          <label for="country-select">🌐</label>
+          <select id="country-select" class="country-dropdown">
+            <option value="FR" selected> France (Français)</option>
+            <option value="DE"> Deutschland (Deutsch)</option>
+            <option value="ES"> España (Español)</option>
+            <option value="IT"> Italia (Italiano)</option>
+          </select>
+        </div>
+
+        <!-- Non-callable Header Phone -->
+        <div class="header-phone-box">
+          <span class="phone-label" id="txt-support-label">Service Client:</span>
+          <span class="phone-number-no-call">+33 805 119 691</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-bar">
+      <ul class="nav-links">
+        <li><a href="index.html" class="active" id="nav-home">Accueil</a></li>
+        <li><a href="#partners" id="nav-partners">Partenaires</a></li>
+        <li><a href="#city-info" id="nav-guide">Guide Destination</a></li>
+        <li><a href="#faq-section" id="nav-faq">FAQ</a></li>
+        <li><a href="blog.html" id="nav-blog">Blog</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- Hero Section with 10-Second Background Slideshow -->
-  <section class="hero" id="heroBanner">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1 id="heroTitle">Rent a Car Worldwide</h1>
-      <p id="heroSubtitle">Book directly with top European and international providers at cheap rates.</p>
+  <!-- Hero Section with Background Slideshow -->
+  <section class="hero-slideshow-section" id="hero-slider">
+    <div class="hero-overlay">
+      <h1 id="hero-title" class="hero-title">VENTE MONDIALE : JUSQU'À 15% DE RÉDUCTION SUR VOTRE LOCATION</h1>
+      
+      <!-- Compact Search Engine Box -->
+      <div class="search-engine-box">
+        <h3 id="search-box-heading">SEARCH AND COMPARE CAR RENTAL RATES</h3>
+        
+        <form id="rental-search-form" class="compact-search-form">
+          <div class="form-row-top">
+            <div class="form-field autocomplete-container">
+              <label id="lbl-pickup-loc">PICK-UP LOCATION:</label>
+              <input type="text" id="pickup-location" placeholder="PARIS All Locations" required autocomplete="off">
+              <ul id="suggestions-list" class="suggestions-list"></ul>
+            </div>
 
-      <!-- Booking Search Widget -->
-      <div class="search-widget">
-        <div class="input-group">
-          <label id="lblPickup">Pick-up Location</label>
-          <input type="text" id="inputPickup" placeholder="Airport, City, or Station" />
-        </div>
-        <div class="input-group">
-          <label id="lblPickupDate">Pick-up Date</label>
-          <input type="date" />
-        </div>
-        <div class="input-group">
-          <label id="lblReturnDate">Return Date</label>
-          <input type="date" />
-        </div>
-        <button class="btn-search" id="btnSearch">Search Cars</button>
+            <div class="form-field">
+              <label id="lbl-dropoff-loc">DROP-OFF LOCATION:</label>
+              <input type="text" id="dropoff-location" placeholder="PARIS All Locations" autocomplete="off">
+            </div>
+          </div>
+
+          <div class="form-row-middle">
+            <div class="form-field-group">
+              <div class="form-field">
+                <label id="lbl-pickup-date">PICK-UP DATE:</label>
+                <input type="date" id="pickup-date" required>
+              </div>
+              <div class="form-field">
+                <label id="lbl-pickup-time">PICK-UP TIME:</label>
+                <input type="time" id="pickup-time" value="10:00">
+              </div>
+            </div>
+
+            <div class="form-field-group">
+              <div class="form-field">
+                <label id="lbl-drop-date">DROP-OFF DATE:</label>
+                <input type="date" id="return-date" required>
+              </div>
+              <div class="form-field">
+                <label id="lbl-drop-time">DROP-OFF TIME:</label>
+                <input type="time" id="return-time" value="10:00">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row-bottom">
+            <label class="checkbox-label">
+              <input type="checkbox" id="driver-age" checked> <span id="txt-driver-age">Driver Age 30-65</span>
+            </label>
+            <button type="submit" id="btn-submit-search" class="btn-find-car">GET YOUR QUOTE &gt;</button>
+          </div>
+        </form>
       </div>
     </div>
   </section>
 
-  <!-- Main Container -->
-  <main class="container">
-
-    <!-- Car Fleet Section -->
-    <section class="section" id="fleet">
-      <h2 class="section-title" id="fleetHeading">Featured Vehicles</h2>
-      <div class="car-grid" id="carGrid">
-        <!-- Dynamic Cars Injected Here by JS -->
+  <!-- Partner Companies Bar -->
+  <section id="partners" class="partners-section">
+    <div class="container">
+      <p class="partners-title" id="txt-partners-title">NOS PARTENAIRES DE CONFIANCE</p>
+      <div class="partner-logos-grid">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Alamo_Rent_A_Car_logo.svg" alt="Alamo" class="partner-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Avis_logo.svg" alt="Avis" class="partner-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Budget_Rent_a_Car_logo.svg" alt="Budget" class="partner-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Dollar_Rent_A_Car_logo.svg" alt="Dollar" class="partner-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Europcar_logo.svg" alt="Europcar" class="partner-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Hertz_Car_Rental_logo.svg" alt="Hertz" class="partner-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/National_Car_Rental_logo.svg" alt="National" class="partner-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Sixt_logo.svg" alt="Sixt" class="partner-logo">
       </div>
-    </section>
+    </div>
+  </section>
 
-    <hr class="divider" />
-
-    <!-- Dynamic FAQ Section -->
-    <section class="section" id="faq">
-      <h2 class="section-title" id="faqHeading">Frequently Asked Questions</h2>
-      <div id="faqContainer" class="faq-container">
-        <!-- Dynamic FAQs Injected Here by JS -->
+  <!-- Customer Reviews Section -->
+  <section class="reviews-section">
+    <div class="container">
+      <div id="reviews-grid" class="reviews-grid">
+        <!-- Reviews generated dynamically via script.js -->
       </div>
-    </section>
+    </div>
+  </section>
 
-  </main>
+  <!-- Dynamic Destination Guide Section -->
+  <section id="city-info" class="city-info-section">
+    <div class="container">
+      <div class="city-content-wrapper">
+        <div class="city-text-box">
+          <h2 id="city-main-title">LOCATION DE VOITURE À PARIS - VILLE LUMIÈRE</h2>
+          <p id="city-p1">Imprégnée d'histoire, de joyaux culturels et architecturaux, Paris est une ville captivante. Dotée d'un patrimoine inégalé, elle attire des millions de visiteurs.</p>
+          <p id="city-p2">L'art occupe une place prépondérante avec des musées de renommée mondiale. Réservez votre voiture de location à Paris pour explorer également Lyon, Nice ou Marseille.</p>
+          <p id="city-p3">Avec plus de 60 ans d'expérience mondiale depuis 1964, EuropeXauto s'associe aux meilleurs loueurs pour vous garantir un service d'excellence au meilleur prix.</p>
+        </div>
+        <div class="city-image-box">
+          <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=600&q=80" id="city-side-img" alt="Voiture à Paris">
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Footer Section -->
-  <footer>
-    <div class="footer-content">
-      <p>&copy; 2026 DriveGlobal Car Rentals Inc. All rights reserved.</p>
-      <p id="footerTagline">Safe, trusted, and reliable car rentals worldwide.</p>
+  <!-- Interactive Accordion FAQ Section -->
+  <section id="faq-section" class="faq-section">
+    <div class="container">
+      <h2 id="faq-main-title" class="section-heading">FOIRE AUX QUESTIONS - LOCATION DE VOITURE</h2>
+      
+      <div class="accordion-container">
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="faq-icon">+</span>
+            <span class="faq-q-text">Ai-je besoin d'une carte de crédit pour louer une voiture à Paris ?</span>
+          </button>
+          <div class="accordion-content">
+            <p>Oui, une carte de crédit au nom du conducteur principal est obligatoire lors du retrait du véhicule.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span class="faq-icon">+</span>
+            <span class="faq-q-text">Quelle assurance est nécessaire pour ma location de voiture à Paris ?</span>
+          </button>
+          <div class="accordion-content">
+            <p>Nos tarifs incluent l'assurance responsabilité civile obligatoire, la couverture dommages (CDW) et la protection contre le vol (TP).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comprehensive Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h5>TOP DESTINATIONS</h5>
+        <ul>
+          <li><a href="#">Prague</a></li>
+          <li><a href="#">Paris</a></li>
+          <li><a href="#">Malaga</a></li>
+          <li><a href="#">London</a></li>
+          <li><a href="#">Lisbon</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>MORE DESTINATIONS</h5>
+        <ul>
+          <li><a href="#">Munich</a></li>
+          <li><a href="#">Miami</a></li>
+          <li><a href="#">Mallorca</a></li>
+          <li><a href="#">Amsterdam</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>PLAN YOUR TRIP</h5>
+        <ul>
+          <li><a href="#">Fully Flexible Cancellation</a></li>
+          <li><a href="#">Fleet Guides</a></li>
+          <li><a href="#">Car Rental Destinations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>COMPANY</h5>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Customer Reviews</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Company Address and Legal Line -->
+    <div class="footer-address-bar">
+      <p><strong>EuropeXauto SAS</strong> - 14 Rue de la Paix, 75002 Paris, France | Support Client: +33 805 119 691</p>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-flex">
+        <p>&copy; 2026 EuropeXauto | <a href="#">Concerned about privacy?</a> | <a href="#cookie-banner" onclick="showCookieBanner()">Cookies</a> | <a href="terms.html" onclick="loadTermsPage(event)">General Business Terms</a></p>
+      </div>
     </div>
   </footer>
 
-  <!-- Mega-Menu Modal Dropdown (Matching Screenshot Style) -->
-  <div class="modal-overlay" id="countryModal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 id="modalTitle">Please choose your Country of Residence</h2>
-        <button class="close-btn" id="closeModal">&times;</button>
+  <!-- Cookies Consent Banner -->
+  <div id="cookie-banner" class="cookie-banner">
+    <div class="cookie-content">
+      <div class="cookie-text">
+        <h4>Control your privacy</h4>
+        <p>Our website uses cookies to improve navigation. <em>We use cookies to share analytics, advertising data, user data, and ad personalization data with Google.</em> <a href="#">Privacy Policy</a> - <a href="#">Terms of use</a></p>
       </div>
+      <div class="cookie-actions">
+        <button class="cookie-link-btn" onclick="hideCookieBanner()">My options</button>
+        <button class="cookie-btn btn-reject" onclick="hideCookieBanner()">Reject</button>
+        <button class="cookie-btn btn-accept" onclick="hideCookieBanner()">Accept</button>
+      </div>
+    </div>
+  </div>
 
-      <div class="region-grid">
-        <!-- Europe Column 1 -->
-        <div class="region-column">
-          <h3>Europe (Top Destinations)</h3>
-          <ul class="country-list">
-            <li onclick="selectLocale('de')">🇩🇪 Deutschland</li>
-            <li onclick="selectLocale('es')">🇪🇸 España</li>
-            <li onclick="selectLocale('fr')">🇫🇷 France</li>
-            <li onclick="selectLocale('it')">🇮🇹 Italia</li>
-            <li onclick="selectLocale('nl')">🇳🇱 Nederland</li>
-            <li onclick="selectLocale('uk')">🇬🇧 United Kingdom</li>
-          </ul>
-        </div>
-
-        <!-- Europe Column 2 -->
-        <div class="region-column">
-          <h3>Europe Cont.</h3>
-          <ul class="country-list">
-            <li onclick="selectLocale('pt')">🇵🇹 Portugal</li>
-            <li onclick="selectLocale('gr')">🇬🇷 Greece</li>
-            <li onclick="selectLocale('at')">🇦🇹 Österreich</li>
-            <li onclick="selectLocale('ch')">🇨🇭 Schweiz</li>
-            <li onclick="selectLocale('pl')">🇵🇱 Polska</li>
-            <li onclick="selectLocale('se')">🇸🇪 Sverige</li>
-          </ul>
-        </div>
-
-        <!-- Americas Column -->
-        <div class="region-column">
-          <h3>Americas</h3>
-          <ul class="country-list">
-            <li onclick="selectLocale('us')">🇺🇸 United States</li>
-            <li onclick="selectLocale('ca')">🇨🇦 Canada (English)</li>
-            <li onclick="selectLocale('mx')">🇲🇽 México</li>
-            <li onclick="selectLocale('br')">🇧🇷 Brasil</li>
-          </ul>
-        </div>
-
-        <!-- Asia & Oceania Column -->
-        <div class="region-column">
-          <h3>Asia & Oceania</h3>
-          <ul class="country-list">
-            <li onclick="selectLocale('au')">🇦🇺 Australia</li>
-            <li onclick="selectLocale('jp')">🇯🇵 Japan</li>
-            <li onclick="selectLocale('ae')">🇦🇪 UAE / Middle East</li>
-          </ul>
+  <!-- Phone Number Pop-up Modal -->
+  <div id="phone-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="modal-body">
+        <div id="modal-spinner" class="spinner"></div>
+        <div id="modal-phone-details" style="display: none;">
+          <h3>Assistance & Réservation Téléphonique</h3>
+          <p>Appelez gratuitement notre centre d'appel pour valider votre réservation immédiate :</p>
+          <div class="phone-display-card">
+            <span>Service Client Téléphonique :</span>
+            <a href="tel:+33805119691" class="callable-phone-number">+33 805 119 691</a>
+          </div>
+          <p class="small-text">Nos experts EuropeXauto sont disponibles 24/7 pour vous accompagner.</p>
         </div>
       </div>
     </div>
