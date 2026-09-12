@@ -115,20 +115,20 @@
       background-size: cover;
       background-repeat: no-repeat;
       transition: background-image 1s ease-in-out;
-      min-height: 480px;
+      min-height: 520px;
     }
 
     .hero-overlay {
       background: rgba(11, 37, 69, 0.75);
-      min-height: 480px;
-      padding: 40px 20px;
+      min-height: 520px;
+      padding: 50px 20px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .hero-content {
-      max-width: 900px;
+      max-width: 960px;
       width: 100%;
       color: #ffffff;
       text-align: center;
@@ -146,11 +146,11 @@
       color: #cbd5e1;
     }
 
-    /* FORMULAIRE DE RECHERCHE */
+    /* FORMULAIRE DE RECHERCHE - AGRANDI */
     .search-box {
       background: #ffffff;
       border-radius: 8px;
-      padding: 20px;
+      padding: 30px;
       color: #1e293b;
       text-align: left;
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
@@ -159,8 +159,8 @@
     .search-row {
       display: flex;
       align-items: center;
-      gap: 16px;
-      margin-bottom: 16px;
+      gap: 20px;
+      margin-bottom: 20px;
     }
 
     .field {
@@ -178,7 +178,7 @@
     }
 
     .field input, .field select {
-      padding: 10px 12px;
+      padding: 12px 14px;
       border: 1px solid #cbd5e1;
       border-radius: 4px;
       font-size: 14px;
@@ -199,8 +199,8 @@
 
     .search-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
       align-items: flex-end;
     }
 
@@ -212,11 +212,36 @@
       font-weight: 800;
       border-radius: 4px;
       cursor: pointer;
-      height: 42px;
+      height: 44px;
     }
 
     .search-btn:hover {
       background: #b45309;
+    }
+
+    /* MESSAGE AVERTISSEMENT / SEARCH NOTICE */
+    .search-notice {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid #e2e8f0;
+      font-size: 13px;
+      color: #475569;
+      line-height: 1.5;
+    }
+
+    .search-notice strong {
+      color: #d97706;
+      font-weight: 700;
+    }
+
+    .search-notice a {
+      color: #2563eb;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .search-notice a:hover {
+      text-decoration: underline;
     }
 
     .suggestions {
@@ -791,6 +816,10 @@
         font-size: 14px;
       }
 
+      .search-box {
+        padding: 20px 15px;
+      }
+
       .search-row {
         flex-direction: column;
         align-items: stretch;
@@ -899,6 +928,12 @@
             </div>
 
             <button class="search-btn" id="searchButton" onclick="openSupportPopup('Service Devis')">OBTENIR UN DEVIS</button>
+          </div>
+
+          <!-- NOTIFICATION SUR LA RECHERCHE EN EUROPE -->
+          <div class="search-notice">
+            <strong>⚠️ Un problème avec la recherche ?</strong><br>
+            Nos services de location de voitures sont disponibles partout en Europe. Si votre destination n’apparaît pas dans la barre de recherche, <a href="tel:+33805119691">appelez-nous directement</a> pour réserver votre voiture rapidement.
           </div>
         </div>
       </div>
