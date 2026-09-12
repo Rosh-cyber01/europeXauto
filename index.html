@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>autoXeurope | Location de Voiture à Paris & en France</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     * {
       box-sizing: border-box;
@@ -15,6 +16,33 @@
     body {
       background-color: #f8f9fa;
       color: #333;
+    }
+
+    /* LOADING OVERLAY */
+    .loader-overlay {
+      position: fixed;
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 3000;
+    }
+
+    .spinner {
+      width: 45px;
+      height: 45px;
+      border: 5px solid #cbd5e1;
+      border-top-color: #2563eb;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
 
     /* EN-TÊTE / HEADER */
@@ -51,14 +79,14 @@
     }
 
     .navigation a {
-      margin: 0 12px;
+      margin: 0 10px;
       text-decoration: none;
       color: #1e293b;
       font-weight: 600;
       font-size: 14px;
     }
 
-    .navigation a:hover {
+    .navigation a:hover, .navigation a.active {
       color: #d97706;
     }
 
@@ -202,6 +230,7 @@
       max-height: 200px;
       overflow-y: auto;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      display: none;
     }
 
     .suggestion-item {
@@ -209,11 +238,22 @@
       cursor: pointer;
       font-size: 13px;
       border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .suggestion-item:hover {
       background: #f1f5f9;
       color: #d97706;
+    }
+
+    .suggestion-item .tag {
+      background: #e2e8f0;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 11px;
+      color: #475569;
     }
 
     /* BANNIÈRE DE PARTENAIRES */
@@ -580,7 +620,7 @@
       font-size: 14px;
     }
 
-    /* FENÊTRE MODALE DE POPUP */
+    /* MODALES */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -589,7 +629,7 @@
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.6);
-      z-index: 1000;
+      z-index: 2000;
       justify-content: center;
       align-items: center;
     }
@@ -617,15 +657,34 @@
       margin-bottom: 20px;
     }
 
-    .call-btn {
+    .call-btn, .btn-primary {
       display: inline-block;
       background: #2563eb;
       color: #ffffff;
-      padding: 12px 24px;
+      padding: 10px 20px;
       border-radius: 4px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 15px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-secondary {
+      background: #cbd5e1;
+      color: #1e293b;
+      padding: 10px 20px;
+      border-radius: 4px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 15px;
     }
 
     .close-modal {
@@ -679,6 +738,16 @@
       text-align: center;
       font-size: 12px;
       color: #94a3b8;
+    }
+
+    .footer-bottom a {
+      color: #94a3b8;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    .footer-bottom a:hover {
+      color: #ffffff;
     }
 
     /* MEDIA QUERIES FOR TABLET & PHONE VIEWS */
@@ -752,6 +821,11 @@
 </head>
 <body>
 
+  <!-- LOADING OVERLAY -->
+  <div id="loader" class="loader-overlay">
+    <div class="spinner"></div>
+  </div>
+
   <!-- EN-TÊTE -->
   <header class="main-header">
     <div class="header-container">
@@ -761,17 +835,18 @@
       </div>
 
       <nav class="navigation">
-        <a href="#searchBox">Offres</a>
+        <a href="index.html" class="active page-link">Accueil</a>
+        <a href="blog.html" class="page-link">Blog</a>
+        <a href="terms.html" class="page-link">Conditions Générales</a>
         <a href="#airports">Aéroports</a>
         <a href="#faq">FAQ</a>
         <a href="#destinations">Destinations</a>
-        <a href="#paris-info">Guide Paris</a>
         <a href="#contact">Contact</a>
       </nav>
 
       <div class="customer-care">
         <span class="care-label">SERVICE CLIENT</span>
-        <a href="tel:+33805119691" class="phone-number">+33 805119691</a>
+        <a href="tel:+33805119691" class="phone-number"><i class="fas fa-phone"></i> +33 805119691</a>
       </div>
     </div>
   </header>
@@ -817,7 +892,7 @@
               <input type="date" id="returnDate">
             </div>
 
-            <!-- CHAISISSEMENT MANUEL DE L'ÂGE DU CONDUCTEUR -->
+            <!-- CHOIX MANUEL DE L'ÂGE DU CONDUCTEUR -->
             <div class="field">
               <label>Âge du conducteur</label>
               <input type="number" id="driverAgeInput" min="18" max="99" placeholder="ex. 30" value="30">
@@ -1065,13 +1140,26 @@
     </section>
   </main>
 
-  <!-- POPUP MODALE -->
+  <!-- POPUP MODALE ASSISTANCE -->
   <div class="modal-overlay" id="popupModal">
     <div class="modal-card">
       <span class="close-modal" onclick="closeSupportPopup()">&times;</span>
       <h3 id="modalSupplierTitle">Assistance Client</h3>
       <p>Pour toute assistance immédiate ou réservation directe, contactez notre service client :</p>
       <a href="tel:+33805119691" class="call-btn">Appeler le +33 805119691</a>
+    </div>
+  </div>
+
+  <!-- COOKIE MODAL -->
+  <div id="cookie-modal" class="modal-overlay">
+    <div class="modal-card">
+      <span class="close-modal" id="close-cookies-btn">&times;</span>
+      <h3>Paramètres des Cookies</h3>
+      <p>Nous utilisons des cookies pour optimiser votre navigation, mesurer l'audience et personnaliser nos contenus.</p>
+      <div class="modal-buttons">
+        <button id="accept-cookies" class="btn-primary">Tout accepter</button>
+        <button id="decline-cookies" class="btn-secondary">Refuser</button>
+      </div>
     </div>
   </div>
 
@@ -1095,6 +1183,8 @@
 
       <div class="footer-column">
         <h3>Société</h3>
+        <a href="blog.html" class="page-link">Blog</a>
+        <a href="terms.html" class="page-link">Conditions Générales</a>
         <a href="#paris-info">À propos</a>
         <a href="#airports">Aéroports</a>
         <a href="#contact">Contact</a>
@@ -1104,11 +1194,44 @@
 
     <div class="footer-bottom">
       <span>© 2026 autoXeurope. Tous droits réservés. | Contact : Helpdesksupportairline@gmail.com</span>
+      <br><br>
+      <a href="#">Confidentialité</a> | 
+      <a href="#" id="open-cookies-btn">Cookies</a> | 
+      <a href="terms.html" class="page-link">Conditions Générales</a>
     </div>
   </footer>
 
   <!-- SCRIPT JAVASCRIPT -->
   <script>
+    // France Locations Autocomplete Dataset
+    const franceLocations = [
+      { name: "Aéroport de Paris-Charles de Gaulle (CDG)", type: "Aéroport" },
+      { name: "Aéroport de Paris-Orly (ORY)", type: "Aéroport" },
+      { name: "Aéroport de Nice-Côte d'Azur (NCE)", type: "Aéroport" },
+      { name: "Aéroport de Lyon-Saint Exupéry (LYS)", type: "Aéroport" },
+      { name: "Aéroport de Marseille-Provence (MRS)", type: "Aéroport" },
+      { name: "Aéroport de Toulouse-Blagnac (TLS)", type: "Aéroport" },
+      { name: "Aéroport de Bordeaux-Mérignac (BOD)", type: "Aéroport" },
+      { name: "Aéroport de Nantes Atlantique (NTE)", type: "Aéroport" },
+      { name: "Aéroport de Bâle-Mulhouse-Fribourg (BSL)", type: "Aéroport" },
+      { name: "Gare de Paris Nord", type: "Gare" },
+      { name: "Gare de Paris Lyon", type: "Gare" },
+      { name: "Gare de Paris Montparnasse", type: "Gare" },
+      { name: "Gare de Lyon Part-Dieu", type: "Gare" },
+      { name: "Gare de Marseille Saint-Charles", type: "Gare" },
+      { name: "Gare de Lille Europe", type: "Gare" },
+      { name: "Gare de Bordeaux Saint-Jean", type: "Gare" },
+      { name: "Gare de Strasbourg-Ville", type: "Gare" },
+      { name: "Gare Routière Internationale de Paris-Gallieni", type: "Gare Routière" },
+      { name: "Gare Routière de Lyon Perrache", type: "Gare Routière" },
+      { name: "Gare Routière de Marseille", type: "Gare Routière" },
+      { name: "Tour Eiffel, Paris", type: "Lieu Emblématique" },
+      { name: "Musée du Louvre, Paris", type: "Lieu Emblématique" },
+      { name: "Château de Versailles", type: "Lieu Emblématique" },
+      { name: "Mont Saint-Michel", type: "Lieu Emblématique" },
+      { name: "Promenade des Anglais, Nice", type: "Lieu Emblématique" }
+    ];
+
     // Diaporama de fond
     const backgroundImages = [
       "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
@@ -1128,6 +1251,50 @@
           currentIndex = (currentIndex + 1) % backgroundImages.length;
           hero.style.backgroundImage = `url('${backgroundImages[currentIndex]}')`;
         }, intervalMs);
+      }
+    }
+
+    // Autocomplete Logic Setup
+    function setupAutocomplete(inputId, suggestionsId) {
+      const input = document.getElementById(inputId);
+      const suggestionsBox = document.getElementById(suggestionsId);
+
+      if (input && suggestionsBox) {
+        input.addEventListener("input", () => {
+          const query = input.value.toLowerCase().trim();
+          suggestionsBox.innerHTML = "";
+
+          if (query.length === 0) {
+            suggestionsBox.style.display = "none";
+            return;
+          }
+
+          const matches = franceLocations.filter(loc =>
+            loc.name.toLowerCase().includes(query) || loc.type.toLowerCase().includes(query)
+          );
+
+          if (matches.length > 0) {
+            matches.forEach(loc => {
+              const item = document.createElement("div");
+              item.className = "suggestion-item";
+              item.innerHTML = `<span><strong>${loc.name}</strong></span> <span class="tag">${loc.type}</span>`;
+              item.addEventListener("click", () => {
+                input.value = loc.name;
+                suggestionsBox.style.display = "none";
+              });
+              suggestionsBox.appendChild(item);
+            });
+            suggestionsBox.style.display = "block";
+          } else {
+            suggestionsBox.style.display = "none";
+          }
+        });
+
+        document.addEventListener("click", (e) => {
+          if (!input.contains(e.target) && !suggestionsBox.contains(e.target)) {
+            suggestionsBox.style.display = "none";
+          }
+        });
       }
     }
 
@@ -1168,9 +1335,11 @@
       }
     }
 
-    // Event listeners for dropoff location checkbox
+    // Event listeners and initializations
     document.addEventListener('DOMContentLoaded', () => {
       initializeBackgroundSlideshow();
+      setupAutocomplete('pickupLocation', 'pickupSuggestions');
+      setupAutocomplete('dropoffLocation', 'dropoffSuggestions');
 
       const checkbox = document.getElementById('differentDropoff');
       const dropoffField = document.getElementById('dropoffField');
@@ -1180,6 +1349,51 @@
           dropoffField.style.display = e.target.checked ? 'flex' : 'none';
         });
       }
+
+      // Cookie Modal Logic
+      const cookieModal = document.getElementById('cookie-modal');
+      const openCookiesBtn = document.getElementById('open-cookies-btn');
+      const closeCookiesBtn = document.getElementById('close-cookies-btn');
+      const acceptBtn = document.getElementById('accept-cookies');
+      const declineBtn = document.getElementById('decline-cookies');
+
+      if (openCookiesBtn && cookieModal) {
+        openCookiesBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          cookieModal.style.display = 'flex';
+        });
+      }
+
+      if (closeCookiesBtn && cookieModal) {
+        closeCookiesBtn.addEventListener('click', () => {
+          cookieModal.style.display = 'none';
+        });
+      }
+
+      if (acceptBtn && cookieModal) {
+        acceptBtn.addEventListener('click', () => cookieModal.style.display = 'none');
+      }
+
+      if (declineBtn && cookieModal) {
+        declineBtn.addEventListener('click', () => cookieModal.style.display = 'none');
+      }
+
+      // 1.5 Second Transition Loader for external internal pages
+      const loader = document.getElementById("loader");
+      const pageLinks = document.querySelectorAll("a.page-link");
+
+      pageLinks.forEach(link => {
+        link.addEventListener("click", function (e) {
+          const targetUrl = this.getAttribute("href");
+          if (targetUrl && targetUrl !== "#" && !targetUrl.startsWith("#")) {
+            e.preventDefault();
+            if (loader) loader.style.display = "flex";
+            setTimeout(() => {
+              window.location.href = targetUrl;
+            }, 1500);
+          }
+        });
+      });
     });
   </script>
 </body>
